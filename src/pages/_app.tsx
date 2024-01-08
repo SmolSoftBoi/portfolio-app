@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Kristian&amp;s Portfolio</title>
+        <title>Kristian&apos;s Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Kristian's Portfolio" />
         <meta property="og:description" content="Check out Kristian's portfolio for some awesome projects!" />
