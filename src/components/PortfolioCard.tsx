@@ -17,7 +17,9 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     'JavaScript': 'Programming language for web development',
     'HTML': 'Markup language for creating web pages',
     'CSS': 'Stylesheet language for designing web layouts',
-    'PHP': 'Server-side scripting language for web development'
+    'PHP': 'Server-side scripting language for web development',
+    'Node.js': 'JavaScript runtime environment for web development',
+    'TypeScript': 'Programming language for building web applications',
   };
 
   return (
