@@ -2,7 +2,7 @@ repo_name: SmolSoftBoi/portfolio-app
 report_id: 3db098e0beff358870bd1ac58008ccd1
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-17T01:44:10+00:00'
+timestamp: '2024-02-29T19:29:21+00:00'
 requested_by: SmolSoftBoi
 provider: github
 branch: main
@@ -46,7 +46,7 @@ tools:
   last_updated_by: dependabot[bot]
   last_updated_on: 2023-12-27 14:39:00.000000000 Z
 - name: Next.js
-  description: 'A small framework for server-rendered universal JavaScript apps '
+  description: A small framework for server-rendered universal JavaScript apps
   website_url: https://nextjs.org/
   version: 14.0.4
   open_source: true
