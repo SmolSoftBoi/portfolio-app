@@ -1,5 +1,13 @@
-import { Block, PullQuote } from "@smolpack/react-bootstrap-extensions";
-import { Button, Card, Carousel, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Block, PullQuote } from '@smolpack/react-bootstrap-extensions';
+import {
+  Button,
+  Card,
+  Carousel,
+  Col,
+  Container,
+  ListGroup,
+  Row,
+} from 'react-bootstrap';
 
 export default function Page() {
   return (
@@ -8,9 +16,13 @@ export default function Page() {
         <Col className="text-center">
           <h1>Welcome to My Portfolio</h1>
           <p>
-            Hi, I&apos;m Kristian Matthews-Kennington, an ambitious software developer specialized in web design and full-stack development. I&apos;m passionate about creating impactful digital experiences.
+            Hi, I&apos;m Kristian Matthews-Kennington, an ambitious software
+            developer specialized in web design and full-stack development.
+            I&apos;m passionate about creating impactful digital experiences.
           </p>
-          <Button variant="primary" href="/about">Learn More About Me</Button>
+          <Button variant="primary" href="/about">
+            Learn More About Me
+          </Button>
         </Col>
       </Row>
       <Row className="mb-5 align-items-stretch">
@@ -34,7 +46,9 @@ export default function Page() {
                 <ListGroup.Item>E-commerce Websites</ListGroup.Item>
                 <ListGroup.Item>Full-stack Projects</ListGroup.Item>
               </ListGroup>
-              <Button variant="primary" href="/portfolio" className="mt-3">View Portfolio</Button>
+              <Button variant="primary" href="/portfolio" className="mt-3">
+                View Portfolio
+              </Button>
             </Card.Body>
           </Card>
         </Col>
@@ -63,5 +77,5 @@ export default function Page() {
         </Col>
       </Row> */}
     </Container>
-  )
+  );
 }

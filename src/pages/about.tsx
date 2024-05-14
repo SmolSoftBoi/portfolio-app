@@ -11,7 +11,10 @@ export default function About() {
         <Col className="text-center">
           <h1>About Me</h1>
           <p>
-            I&apos;m Kristian Matthews-Kennington, a BSc-educated software developer with six years of experience. I specialize in web design and full-stack development, with a strong focus on creating impactful digital experiences.
+            I&apos;m Kristian Matthews-Kennington, a BSc-educated software
+            developer with six years of experience. I specialize in web design
+            and full-stack development, with a strong focus on creating
+            impactful digital experiences.
           </p>
         </Col>
       </Row>
@@ -44,4 +47,4 @@ export default function About() {
       </Row>
     </Container>
   );
-};
+}

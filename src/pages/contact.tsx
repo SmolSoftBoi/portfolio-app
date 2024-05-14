@@ -7,14 +7,18 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -23,7 +27,10 @@ export default function Contact() {
 
     try {
       // Send a POST request to the API route
-      const response = await axios.post<{ message: string }>('/api/contact', formData);
+      const response = await axios.post<{ message: string }>(
+        '/api/contact',
+        formData
+      );
 
       // Handle success
       alert(response.data.message);
@@ -35,34 +42,58 @@ export default function Contact() {
     }
   };
 
-
   return (
-    <Container className='mt-5'>
+    <Container className="mt-5">
       <Row>
-        <Col className='text-center mb-5'>
+        <Col className="text-center mb-5">
           <h1>Contact Me</h1>
         </Col>
       </Row>
       <Row>
         <Col md={6}>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className='mb-3'>
+            <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type='text' name='name' value={formData.name} onChange={handleChange} required />
+              <Form.Control
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
-            <Form.Group className='mb-3'>
+            <Form.Group className="mb-3">
               <Form.Label>Email</Form.Label>
-              <Form.Control type='email' name='email' value={formData.email} onChange={handleChange} required />
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
-            <Form.Group className='mb-3'>
+            <Form.Group className="mb-3">
               <Form.Label>Subject</Form.Label>
-              <Form.Control type='text' name='subject' value={formData.subject} onChange={handleChange} required />
+              <Form.Control
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
-            <Form.Group className='mb-3'>
+            <Form.Group className="mb-3">
               <Form.Label>Message</Form.Label>
-              <Form.Control as='textarea' rows={3} name='message' value={formData.message} onChange={handleChange} required />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
-            <Button variant='primary' type='submit'>
+            <Button variant="primary" type="submit">
               Submit
             </Button>
           </Form>

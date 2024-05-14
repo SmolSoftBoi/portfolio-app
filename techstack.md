@@ -42,13 +42,16 @@ Full tech stack [here](/techstack.md)
 <div align="center">
 
 # Tech Stack File
-![](https://img.stackshare.io/repo.svg "repo") [SmolSoftBoi/portfolio-app](https://github.com/SmolSoftBoi/portfolio-app)![](https://img.stackshare.io/public_badge.svg "public")
+
+![](https://img.stackshare.io/repo.svg 'repo') [SmolSoftBoi/portfolio-app](https://github.com/SmolSoftBoi/portfolio-app)![](https://img.stackshare.io/public_badge.svg 'public')
 <br/><br/>
 |20<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
+
 </div>
 
 ## <img src='https://img.stackshare.io/languages.svg'/> Languages (2)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'>
@@ -70,6 +73,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (5)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/1101/C9QJ7V3X.png' alt='Bootstrap'>
@@ -115,6 +119,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## <img src='https://img.stackshare.io/devops.svg'/> DevOps (5)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/3337/Q4L7Jncy.jpg' alt='ESLint'>
@@ -160,6 +165,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## Other (1)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/no-img-open-source.png' alt='axios'>
@@ -172,20 +178,19 @@ Full tech stack [here](/techstack.md)
 </tr>
 </table>
 
-
 ## <img src='https://img.stackshare.io/group.svg' /> Open source packages (7)</h2>
 
 ## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (7)
 
-|NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
-|:------|:------|:------|:------|:------|:------|
-|[@types/node](https://www.npmjs.com/@types/node)|v20.10.7|01/08/24|dependabot[bot] |MIT|N/A|
-|[@types/react](https://www.npmjs.com/@types/react)|v18.2.47|01/08/24|dependabot[bot] |MIT|N/A|
-|[@types/react-dom](https://www.npmjs.com/@types/react-dom)|v18.2.18|01/08/24|dependabot[bot] |MIT|N/A|
-|[eslint-config-next](https://www.npmjs.com/eslint-config-next)|v14.0.4|12/25/23|dependabot[bot] |N/A|N/A|
-|[react-bootstrap](https://www.npmjs.com/react-bootstrap)|v2.9.2|01/08/24|dependabot[bot] |MIT|N/A|
-|[react-dom](https://www.npmjs.com/react-dom)|v18.2.0|01/08/24|dependabot[bot] |MIT|N/A|
-|[sharp](https://www.npmjs.com/sharp)|v0.33.1|12/27/23|dependabot[bot] |Apache-2.0|N/A|
+| NAME                                                           | VERSION  | LAST UPDATED | LAST UPDATED BY | LICENSE    | VULNERABILITIES |
+| :------------------------------------------------------------- | :------- | :----------- | :-------------- | :--------- | :-------------- |
+| [@types/node](https://www.npmjs.com/@types/node)               | v20.10.7 | 01/08/24     | dependabot[bot] | MIT        | N/A             |
+| [@types/react](https://www.npmjs.com/@types/react)             | v18.2.47 | 01/08/24     | dependabot[bot] | MIT        | N/A             |
+| [@types/react-dom](https://www.npmjs.com/@types/react-dom)     | v18.2.18 | 01/08/24     | dependabot[bot] | MIT        | N/A             |
+| [eslint-config-next](https://www.npmjs.com/eslint-config-next) | v14.0.4  | 12/25/23     | dependabot[bot] | N/A        | N/A             |
+| [react-bootstrap](https://www.npmjs.com/react-bootstrap)       | v2.9.2   | 01/08/24     | dependabot[bot] | MIT        | N/A             |
+| [react-dom](https://www.npmjs.com/react-dom)                   | v18.2.0  | 01/08/24     | dependabot[bot] | MIT        | N/A             |
+| [sharp](https://www.npmjs.com/sharp)                           | v0.33.1  | 12/27/23     | dependabot[bot] | Apache-2.0 | N/A             |
 
 <br/>
 <div align='center'>

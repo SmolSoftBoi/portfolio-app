@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Container, Row, Col, Card, Button, Badge, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Badge,
+  Tooltip,
+  OverlayTrigger,
+} from 'react-bootstrap';
 
 import barkProfilePic from '@/public/bark/profile-picture.png';
 import bearBeltsProfilePic from '@/public/bear-belts/profile-picture.png';
@@ -27,35 +36,39 @@ export default function Portfolio() {
   const projects = [
     {
       title: 'Cozy Glow',
-      description: 'An e-commerce platform specializing in home fragrances, built on Shopify.',
+      description:
+        'An e-commerce platform specializing in home fragrances, built on Shopify.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://cozyglow.store',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: cozyGlowProfilePic
+      profileImage: cozyGlowProfilePic,
     },
     {
       title: 'Bear Belts',
-      description: 'An online store offering premium quality belts with a focus on durability and style.',
+      description:
+        'An online store offering premium quality belts with a focus on durability and style.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://bearbelts.store',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: bearBeltsProfilePic
+      profileImage: bearBeltsProfilePic,
     },
     {
       title: 'Pocket Bears Apparel',
-      description: 'A fashion-forward apparel brand that combines comfort with modern design.',
+      description:
+        'A fashion-forward apparel brand that combines comfort with modern design.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://pocketbearsapparel.store',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: pocketBearsApparelProfilePic
+      profileImage: pocketBearsApparelProfilePic,
     },
     {
       title: 'Sizzle & Soak',
-      description: 'A luxury bath products store offering a range of soaps, bath bombs, and more.',
+      description:
+        'A luxury bath products store offering a range of soaps, bath bombs, and more.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://sizzleandsoak.store',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: sizzleSoakProfilePic
+      profileImage: sizzleSoakProfilePic,
     },
     {
       title: 'Node Subler',
@@ -63,56 +76,91 @@ export default function Portfolio() {
       techStack: ['Node.js', 'TypeScript'],
       link: 'https://github.com/SmolSoftBoi/node-subler',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: nodeSublerProfilePic
+      profileImage: nodeSublerProfilePic,
     },
     {
       title: 'bark.com',
-      description: 'Contributed to full-stack development on the Bark.com website, enhancing user experience and performance.',
+      description:
+        'Contributed to full-stack development on the Bark.com website, enhancing user experience and performance.',
       techStack: ['PHP', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://bark.com',
       headerImage: '/path/to/header-image.jpg',
-      profileImage: barkProfilePic
-    }
+      profileImage: barkProfilePic,
+    },
   ];
 
   const handleFilterChange = (tech: string) => {
     setFilter(tech);
   };
 
-  const filteredProjects = filter === 'All' ? projects : projects.filter(project => project.techStack.includes(filter));
+  const filteredProjects =
+    filter === 'All'
+      ? projects
+      : projects.filter((project) => project.techStack.includes(filter));
 
   // Summary section
   const SummarySection = () => (
-    <div className='summary-section text-center mb-5'>
+    <div className="summary-section text-center mb-5">
       <h2>Welcome to My Portfolio</h2>
-      <p>I specialize in full-stack development, particularly with Shopify and JavaScript. Passionate about creating efficient, user-friendly experiences.</p>
+      <p>
+        I specialize in full-stack development, particularly with Shopify and
+        JavaScript. Passionate about creating efficient, user-friendly
+        experiences.
+      </p>
     </div>
   );
 
   return (
     <>
       <Head>
-        <meta name='description' content='Check out my portfolio for examples of my full-stack development work, specializing in Shopify and JavaScript.' />
-        <meta name='keywords' content='portfolio, full-stack development, Shopify, JavaScript' />
+        <meta
+          name="description"
+          content="Check out my portfolio for examples of my full-stack development work, specializing in Shopify and JavaScript."
+        />
+        <meta
+          name="keywords"
+          content="portfolio, full-stack development, Shopify, JavaScript"
+        />
       </Head>
-      <Container className='mt-5'>
+      <Container className="mt-5">
         <SummarySection />
         <Row>
-          <Col className='text-center mb-5'>
-            <Button variant='secondary' className={filter === 'All' ? 'active' : ''} onClick={() => handleFilterChange('All')}>All</Button>
-            {['Shopify', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Node.js', 'PHP'].map((tech, index) => (
-              <Button key={index} variant='secondary' className={`ms-2 ${filter === tech ? 'active' : ''}`} onClick={() => handleFilterChange(tech)}>{tech}</Button>
+          <Col className="text-center mb-5">
+            <Button
+              variant="secondary"
+              className={filter === 'All' ? 'active' : ''}
+              onClick={() => handleFilterChange('All')}
+            >
+              All
+            </Button>
+            {[
+              'Shopify',
+              'JavaScript',
+              'TypeScript',
+              'HTML',
+              'CSS',
+              'Node.js',
+              'PHP',
+            ].map((tech, index) => (
+              <Button
+                key={index}
+                variant="secondary"
+                className={`ms-2 ${filter === tech ? 'active' : ''}`}
+                onClick={() => handleFilterChange(tech)}
+              >
+                {tech}
+              </Button>
             ))}
           </Col>
         </Row>
         <Row>
           {filteredProjects.map((project, index) => (
-            <Col md={4} key={index} className='mt-5 mb-4'>
-              <PortfolioCard project={project}/>
+            <Col md={4} key={index} className="mt-5 mb-4">
+              <PortfolioCard project={project} />
             </Col>
           ))}
         </Row>
       </Container>
     </>
   );
-};
+}

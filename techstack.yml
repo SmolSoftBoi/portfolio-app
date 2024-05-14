@@ -8,263 +8,266 @@ provider: github
 branch: main
 detected_tools_count: 20
 tools:
-- name: JavaScript
-  description: Lightweight, interpreted, object-oriented language with first-class
-    functions
-  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Languages
-  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
-  detection_source: Repo Metadata
-- name: TypeScript
-  description: A superset of JavaScript that compiles to clean JavaScript output
-  website_url: http://www.typescriptlang.org
-  license: Apache-2.0
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Languages
-  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
-  detection_source: Repo Metadata
-- name: Bootstrap
-  description: Simple and flexible HTML, CSS, and JS for popular UI components and
-    interactions
-  website_url: http://getbootstrap.com/
-  version: 5.3.2
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Front-End Frameworks
-  image_url: https://img.stackshare.io/service/1101/C9QJ7V3X.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-27 14:39:00.000000000 Z
-- name: Next.js
-  description: A small framework for server-rendered universal JavaScript apps
-  website_url: https://nextjs.org/
-  version: 14.0.4
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Frameworks (Full Stack)
-  image_url: https://img.stackshare.io/service/5936/nextjs.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: Node.js
-  description: A platform built on Chrome's JavaScript runtime for easily building
-    fast, scalable network applications
-  website_url: http://nodejs.org/
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Frameworks (Full Stack)
-  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
-  detection_source: package.json
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: React
-  description: A JavaScript library for building user interfaces
-  website_url: https://reactjs.org/
-  version: 18.2.0
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: Javascript UI Libraries
-  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 01:05:45.000000000 Z
-- name: Sass
-  description: Syntactically Awesome Style Sheets
-  website_url: http://sass-lang.com/
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: CSS Pre-processors / Extensions
-  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
-  detection_source: package.json
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: ESLint
-  description: The fully pluggable JavaScript code quality tool
-  website_url: http://eslint.org/
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Code Review
-  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
-  detection_source: package.json
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: Git
-  description: Fast, scalable, distributed revision control system
-  website_url: http://git-scm.com/
-  open_source: true
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Version Control System
-  image_url: https://img.stackshare.io/service/1046/git.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
-  detection_source: Repo Metadata
-- name: GitHub Actions
-  description: Automate your workflow from idea to production
-  website_url: https://github.com/features/actions
-  open_source: false
-  hosted_saas: true
-  category: Build, Test, Deploy
-  sub_category: Continuous Integration
-  image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/.github/workflows/codeql.yml
-  detection_source: ".github/workflows/codeql.yml"
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-18 14:48:50.000000000 Z
-- name: Yarn
-  description: A new package manager for JavaScript
-  website_url: https://yarnpkg.com/
-  open_source: true
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Front End Package Manager
-  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: yarn.lock
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: npm
-  description: The package manager for JavaScript.
-  website_url: https://www.npmjs.com/
-  open_source: false
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Front End Package Manager
-  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
-  detection_source: package.json
-  last_updated_by: Kristian Matthews-Kennington
-  last_updated_on: 2023-09-25 13:53:51.000000000 Z
-- name: axios
-  description: Promise based HTTP client for the browser and node.js
-  website_url: https://github.com/mzabriskie/axios
-  version: 1.6.5
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: Javascript Utilities & Libraries
-  image_url: https://img.stackshare.io/no-img-open-source.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 12:48:03.000000000 Z
-- name: "@types/node"
-  description: TypeScript definitions for Node.js
-  package_url: https://www.npmjs.com/@types/node
-  version: 20.10.7
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 13:02:52.000000000 Z
-- name: "@types/react"
-  description: TypeScript definitions for React
-  package_url: https://www.npmjs.com/@types/react
-  version: 18.2.47
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 13:02:52.000000000 Z
-- name: "@types/react-dom"
-  description: TypeScript definitions for React
-  package_url: https://www.npmjs.com/@types/react-dom
-  version: 18.2.18
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 13:02:52.000000000 Z
-- name: eslint-config-next
-  description: ESLint configuration used by Next.js
-  package_url: https://www.npmjs.com/eslint-config-next
-  version: 14.0.4
-  open_source: false
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Package Managers
-  image_url: https://img.stackshare.io/package/npm/image.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-25 01:07:49.000000000 Z
-- name: react-bootstrap
-  description: Bootstrap 3 components built with React
-  package_url: https://www.npmjs.com/react-bootstrap
-  version: 2.9.2
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16383/default_92302d1bbf4c0f67b862869662b4f69002c94aad.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 01:05:45.000000000 Z
-- name: react-dom
-  description: React package for working with the DOM
-  package_url: https://www.npmjs.com/react-dom
-  version: 18.2.0
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2024-01-08 01:05:45.000000000 Z
-- name: sharp
-  description: High performance Node.js image processing
-  package_url: https://www.npmjs.com/sharp
-  version: 0.33.1
-  license: Apache-2.0
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16806/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
-  detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
-  detection_source: package.json
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-27 14:42:27.000000000 Z
+  - name: JavaScript
+    description:
+      Lightweight, interpreted, object-oriented language with first-class
+      functions
+    website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: Languages
+    image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
+    detection_source: Repo Metadata
+  - name: TypeScript
+    description: A superset of JavaScript that compiles to clean JavaScript output
+    website_url: http://www.typescriptlang.org
+    license: Apache-2.0
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: Languages
+    image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
+    detection_source: Repo Metadata
+  - name: Bootstrap
+    description:
+      Simple and flexible HTML, CSS, and JS for popular UI components and
+      interactions
+    website_url: http://getbootstrap.com/
+    version: 5.3.2
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: Front-End Frameworks
+    image_url: https://img.stackshare.io/service/1101/C9QJ7V3X.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2023-12-27 14:39:00.000000000 Z
+  - name: Next.js
+    description: A small framework for server-rendered universal JavaScript apps
+    website_url: https://nextjs.org/
+    version: 14.0.4
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: Frameworks (Full Stack)
+    image_url: https://img.stackshare.io/service/5936/nextjs.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: Node.js
+    description:
+      A platform built on Chrome's JavaScript runtime for easily building
+      fast, scalable network applications
+    website_url: http://nodejs.org/
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: Frameworks (Full Stack)
+    image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
+    detection_source: package.json
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: React
+    description: A JavaScript library for building user interfaces
+    website_url: https://reactjs.org/
+    version: 18.2.0
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: Javascript UI Libraries
+    image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 01:05:45.000000000 Z
+  - name: Sass
+    description: Syntactically Awesome Style Sheets
+    website_url: http://sass-lang.com/
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Languages & Frameworks
+    sub_category: CSS Pre-processors / Extensions
+    image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
+    detection_source: package.json
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: ESLint
+    description: The fully pluggable JavaScript code quality tool
+    website_url: http://eslint.org/
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Build, Test, Deploy
+    sub_category: Code Review
+    image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
+    detection_source: package.json
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: Git
+    description: Fast, scalable, distributed revision control system
+    website_url: http://git-scm.com/
+    open_source: true
+    hosted_saas: false
+    category: Build, Test, Deploy
+    sub_category: Version Control System
+    image_url: https://img.stackshare.io/service/1046/git.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app
+    detection_source: Repo Metadata
+  - name: GitHub Actions
+    description: Automate your workflow from idea to production
+    website_url: https://github.com/features/actions
+    open_source: false
+    hosted_saas: true
+    category: Build, Test, Deploy
+    sub_category: Continuous Integration
+    image_url: https://img.stackshare.io/service/11563/actions.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/.github/workflows/codeql.yml
+    detection_source: '.github/workflows/codeql.yml'
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2023-12-18 14:48:50.000000000 Z
+  - name: Yarn
+    description: A new package manager for JavaScript
+    website_url: https://yarnpkg.com/
+    open_source: true
+    hosted_saas: false
+    category: Build, Test, Deploy
+    sub_category: Front End Package Manager
+    image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: yarn.lock
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: npm
+    description: The package manager for JavaScript.
+    website_url: https://www.npmjs.com/
+    open_source: false
+    hosted_saas: false
+    category: Build, Test, Deploy
+    sub_category: Front End Package Manager
+    image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/package.json
+    detection_source: package.json
+    last_updated_by: Kristian Matthews-Kennington
+    last_updated_on: 2023-09-25 13:53:51.000000000 Z
+  - name: axios
+    description: Promise based HTTP client for the browser and node.js
+    website_url: https://github.com/mzabriskie/axios
+    version: 1.6.5
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: Javascript Utilities & Libraries
+    image_url: https://img.stackshare.io/no-img-open-source.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 12:48:03.000000000 Z
+  - name: '@types/node'
+    description: TypeScript definitions for Node.js
+    package_url: https://www.npmjs.com/@types/node
+    version: 20.10.7
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 13:02:52.000000000 Z
+  - name: '@types/react'
+    description: TypeScript definitions for React
+    package_url: https://www.npmjs.com/@types/react
+    version: 18.2.47
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 13:02:52.000000000 Z
+  - name: '@types/react-dom'
+    description: TypeScript definitions for React
+    package_url: https://www.npmjs.com/@types/react-dom
+    version: 18.2.18
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 13:02:52.000000000 Z
+  - name: eslint-config-next
+    description: ESLint configuration used by Next.js
+    package_url: https://www.npmjs.com/eslint-config-next
+    version: 14.0.4
+    open_source: false
+    hosted_saas: false
+    category: Build, Test, Deploy
+    sub_category: Package Managers
+    image_url: https://img.stackshare.io/package/npm/image.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2023-12-25 01:07:49.000000000 Z
+  - name: react-bootstrap
+    description: Bootstrap 3 components built with React
+    package_url: https://www.npmjs.com/react-bootstrap
+    version: 2.9.2
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/16383/default_92302d1bbf4c0f67b862869662b4f69002c94aad.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 01:05:45.000000000 Z
+  - name: react-dom
+    description: React package for working with the DOM
+    package_url: https://www.npmjs.com/react-dom
+    version: 18.2.0
+    license: MIT
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2024-01-08 01:05:45.000000000 Z
+  - name: sharp
+    description: High performance Node.js image processing
+    package_url: https://www.npmjs.com/sharp
+    version: 0.33.1
+    license: Apache-2.0
+    open_source: true
+    hosted_saas: false
+    category: Libraries
+    sub_category: npm Packages
+    image_url: https://img.stackshare.io/package/16806/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
+    detection_source_url: https://github.com/SmolSoftBoi/portfolio-app/blob/main/yarn.lock
+    detection_source: package.json
+    last_updated_by: dependabot[bot]
+    last_updated_on: 2023-12-27 14:42:27.000000000 Z
