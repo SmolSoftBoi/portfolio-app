@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Container, Row, Col, ListGroup, Card } from 'react-bootstrap';
 
 import profilePic from '@/public/profile-picture.jpg';
-import { Timeline, TimelineItem } from '@/components/Timeline';
+import Timeline, { TimelineItem } from '@/app/components/Timeline';
 
 export default function About() {
   return (

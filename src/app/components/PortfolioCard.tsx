@@ -1,6 +1,5 @@
-import { Project } from '@/pages/portfolio';
+import { Project } from '@/app/portfolio';
 import Image from 'next/image';
-import React from 'react';
 import { Badge, Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 interface PortfolioCardProps {
@@ -25,11 +24,13 @@ export default function PortfolioCard(props: PortfolioCardProps) {
   return (
     <Card className="profile-variant h-100">
       <Card.Body className="d-flex flex-column">
-        <Image
-          src={props.project.profileImage}
-          alt={props.project.title}
-          className="card-profile-img"
-        />
+        {props.project.profileImage ? (
+          <Image
+            src={props.project.profileImage}
+            alt={props.project.title}
+            className="card-profile-img"
+          />
+        ) : null}
         <Card.Title className="text-center">{props.project.title}</Card.Title>
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>

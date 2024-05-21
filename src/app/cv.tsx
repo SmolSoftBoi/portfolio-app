@@ -14,8 +14,8 @@ export default function Cv() {
         <Col className="text-center">
           <h1>Kristian Matthews-Kennington</h1>
           <p>
-            kristian@matthews-kennington.com | +44 7563 215490 | Oakenshaw, United
-            Kingdom
+            kristian@matthews-kennington.com | +44 7563 215490 | Oakenshaw,
+            United Kingdom
           </p>
         </Col>
       </Row>

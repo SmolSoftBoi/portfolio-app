@@ -19,6 +19,6 @@ export function TimelineItem(props: TimelineItemProps) {
 
 interface TimelineProps extends React.PropsWithChildren {}
 
-export function Timeline(props: TimelineProps) {
+export default function Timeline(props: TimelineProps) {
   return <div className="timeline">{props.children}</div>;
 }

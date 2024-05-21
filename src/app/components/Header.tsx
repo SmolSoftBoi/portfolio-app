@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 import profilePic from '@/public/profile-picture.jpg';
@@ -8,8 +8,7 @@ import profileHeader from '@/public/profile-header.jpg';
 import Image from 'next/image';
 
 export default function Header() {
-  const router = useRouter();
-  const { pathname } = router;
+  const pathname = usePathname();
 
   return (
     <header

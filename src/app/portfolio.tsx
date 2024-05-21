@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Badge,
-  Tooltip,
-  OverlayTrigger,
-} from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import barkProfilePic from '@/public/bark/profile-picture.png';
 import bearBeltsProfilePic from '@/public/bear-belts/profile-picture.png';
@@ -17,7 +7,7 @@ import cozyGlowProfilePic from '@/public/cozy-glow/profile-picture.png';
 import nodeSublerProfilePic from '@/public/node-subler/profile-picture.png';
 import pocketBearsApparelProfilePic from '@/public/pocket-bears-apparel/profile-picture.png';
 import sizzleSoakProfilePic from '@/public/sizzle-soak/profile-picture.png';
-import PortfolioCard from '@/components/PortfolioCard';
+import PortfolioCard from '@/app/components/PortfolioCard';
 import Head from 'next/head';
 import type { StaticImageData } from 'next/image';
 
@@ -26,7 +16,7 @@ export interface Project {
   description: string;
   techStack: string[];
   link: string;
-  headerImage: string;
+  headerImage?: StaticImageData;
   profileImage: StaticImageData;
 }
 
@@ -40,7 +30,6 @@ export default function Portfolio() {
         'An e-commerce platform specializing in home fragrances, built on Shopify.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://cozyglow.store',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: cozyGlowProfilePic,
     },
     {
@@ -49,7 +38,6 @@ export default function Portfolio() {
         'An online store offering premium quality belts with a focus on durability and style.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://bearbelts.store',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: bearBeltsProfilePic,
     },
     {
@@ -58,7 +46,6 @@ export default function Portfolio() {
         'A fashion-forward apparel brand that combines comfort with modern design.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://pocketbearsapparel.store',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: pocketBearsApparelProfilePic,
     },
     {
@@ -67,7 +54,6 @@ export default function Portfolio() {
         'A luxury bath products store offering a range of soaps, bath bombs, and more.',
       techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://sizzleandsoak.store',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: sizzleSoakProfilePic,
     },
     {
@@ -75,7 +61,6 @@ export default function Portfolio() {
       description: 'A Node.js library for interfacing with the Subler CLI.',
       techStack: ['Node.js', 'TypeScript'],
       link: 'https://github.com/SmolSoftBoi/node-subler',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: nodeSublerProfilePic,
     },
     {
@@ -84,7 +69,6 @@ export default function Portfolio() {
         'Contributed to full-stack development on the Bark.com website, enhancing user experience and performance.',
       techStack: ['PHP', 'JavaScript', 'HTML', 'CSS'],
       link: 'https://bark.com',
-      headerImage: '/path/to/header-image.jpg',
       profileImage: barkProfilePic,
     },
   ];
@@ -101,7 +85,7 @@ export default function Portfolio() {
   // Summary section
   const SummarySection = () => (
     <div className="summary-section text-center mb-5">
-      <h2>Welcome to My Portfolio</h2>
+      <h1>Welcome to My Portfolio</h1>
       <p>
         I specialize in full-stack development, particularly with Shopify and
         JavaScript. Passionate about creating efficient, user-friendly
