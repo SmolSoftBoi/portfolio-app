@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
@@ -7,9 +9,9 @@ import cozyGlowProfilePic from '@/public/cozy-glow/profile-picture.png';
 import nodeSublerProfilePic from '@/public/node-subler/profile-picture.png';
 import pocketBearsApparelProfilePic from '@/public/pocket-bears-apparel/profile-picture.png';
 import sizzleSoakProfilePic from '@/public/sizzle-soak/profile-picture.png';
-import PortfolioCard from '@/app/components/PortfolioCard';
 import Head from 'next/head';
 import type { StaticImageData } from 'next/image';
+import PortfolioCard from '../components/PortfolioCard';
 
 export interface Project {
   title: string;
@@ -20,7 +22,7 @@ export interface Project {
   profileImage: StaticImageData;
 }
 
-export default function Portfolio() {
+export default function Page() {
   const [filter, setFilter] = useState('All');
 
   const projects = [

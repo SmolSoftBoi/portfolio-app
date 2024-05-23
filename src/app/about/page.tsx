@@ -1,10 +1,16 @@
-import Image from 'next/image';
-import { Container, Row, Col, ListGroup, Card } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  Card,
+  CardHeader,
+  CardBody,
+  ListGroupItem,
+} from 'react-bootstrap';
+import Timeline, { TimelineItem } from '../components/Timeline';
 
-import profilePic from '@/public/profile-picture.jpg';
-import Timeline, { TimelineItem } from '@/app/components/Timeline';
-
-export default function About() {
+export default function Page() {
   return (
     <Container className="mt-5">
       <Row className="mb-5">
@@ -21,14 +27,14 @@ export default function About() {
       <Row className="mb-5">
         <Col md={6}>
           <Card>
-            <Card.Header className="bg-primary">Core Competencies</Card.Header>
-            <Card.Body>
+            <CardHeader className="bg-primary">Core Competencies</CardHeader>
+            <CardBody>
               <ListGroup variant="flush">
-                <ListGroup.Item>Customer Service</ListGroup.Item>
-                <ListGroup.Item>Team Player</ListGroup.Item>
-                <ListGroup.Item>Technological Skills</ListGroup.Item>
+                <ListGroupItem>Customer Service</ListGroupItem>
+                <ListGroupItem>Team Player</ListGroupItem>
+                <ListGroupItem>Technological Skills</ListGroupItem>
               </ListGroup>
-            </Card.Body>
+            </CardBody>
           </Card>
         </Col>
         <Col md={6}>
