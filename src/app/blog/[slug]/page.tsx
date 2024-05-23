@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import { getBlogPosts } from '../utils';
-import Head from 'next/head';
 import { Col, Container, Row } from 'react-bootstrap';
-import CustomMdx from '@/app/components/CustomMdx';
 import { PropsWithRef } from 'react';
+import { baseUrl } from 'src/app/sitemap';
+import CustomMdx from 'src/app/components/CustomMdx';
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -19,6 +19,38 @@ type BlogProps = PropsWithRef<{
   };
 }>;
 
+export function generateMetadata({ params }: BlogProps) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
+
+  if (!post) {
+    return;
+  }
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.summary,
+    keywords: post.metadata.keywords,
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      url: `${baseUrl}/blog/${post.slug}`,
+      type: 'article',
+      publishedTime: post.metadata.publishedAt,
+      images: [
+        {
+          url: post.metadata.image,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      images: [post.metadata.image],
+    },
+  };
+}
+
 export default function Blog({ params }: BlogProps) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
 
@@ -27,21 +59,17 @@ export default function Blog({ params }: BlogProps) {
   }
 
   return (
-    <>
-      <Head>
-        <meta name="description" content={post.metadata.summary} />
-        <meta name="keywords" content={post.metadata.keywords} />
-      </Head>
-      <Container className="mt-5">
-        <Row className="mb-5">
-          <Col className="text-center">
-            <h1>{post.metadata.title}</h1>
-            <p>
-              <CustomMdx source={post.content} />
-            </p>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container className="mt-5">
+      <Row className="mb-5">
+        <Col className="text-center">
+          <h1>{post.metadata.title}</h1>
+        </Col>
+      </Row>
+      <Row className="mb-5">
+        <Col>
+          <CustomMdx source={post.content} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
