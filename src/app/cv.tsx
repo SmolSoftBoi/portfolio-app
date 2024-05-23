@@ -5,6 +5,7 @@ import {
   ListGroup,
   Accordion,
   Button,
+  ListGroupItem,
 } from 'react-bootstrap';
 
 export default function Cv() {
@@ -23,28 +24,24 @@ export default function Cv() {
         <Col md={6}>
           <h2>Core Competencies and Achievements</h2>
           <ListGroup>
-            <ListGroup.Item>
+            <ListGroupItem>
               Customer Service: Generated £4k in monthly company revenue.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </ListGroupItem>
+            <ListGroupItem>
               Team Player: 100% order fulfillment during busy festive periods.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </ListGroupItem>
+            <ListGroupItem>
               Technological Skills: Proficient in HTML, CSS, JavaScript, and
               more.
-            </ListGroup.Item>
+            </ListGroupItem>
           </ListGroup>
         </Col>
         <Col md={6}>
           <h2>Technological Skills</h2>
           <ListGroup>
-            <ListGroup.Item>
-              Web Design and Full-stack Development
-            </ListGroup.Item>
-            <ListGroup.Item>
-              User Experience and Interface Design
-            </ListGroup.Item>
-            <ListGroup.Item>Agile Workflow</ListGroup.Item>
+            <ListGroupItem>Web Design and Full-stack Development</ListGroupItem>
+            <ListGroupItem>User Experience and Interface Design</ListGroupItem>
+            <ListGroupItem>Agile Workflow</ListGroupItem>
           </ListGroup>
         </Col>
       </Row>
