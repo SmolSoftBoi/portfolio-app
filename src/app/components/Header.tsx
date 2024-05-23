@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Nav, Container } from 'react-bootstrap';
 
 import profilePic from '@/public/profile-picture.jpg';
 import profileHeader from '@/public/profile-header.jpg';

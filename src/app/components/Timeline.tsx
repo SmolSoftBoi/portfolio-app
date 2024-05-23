@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, CardBody, CardHeader } from 'react-bootstrap';
 
 interface TimelineItemProps {
   title: string;
@@ -10,8 +10,8 @@ export function TimelineItem(props: TimelineItemProps) {
   return (
     <div className="timeline-item">
       <Card>
-        <Card.Header>{props.title}</Card.Header>
-        <Card.Body>{props.content}</Card.Body>
+        <CardHeader>{props.title}</CardHeader>
+        <CardBody>{props.content}</CardBody>
       </Card>
     </div>
   );
