@@ -1,17 +1,18 @@
-import { Block, PullQuote } from '@smolpack/react-bootstrap-extensions';
 import {
   Button,
   Card,
-  Carousel,
+  CardBody,
+  CardHeader,
   Col,
   Container,
   ListGroup,
+  ListGroupItem,
   Row,
 } from 'react-bootstrap';
 
 export default function Page() {
   return (
-    <Container className="mt-5">
+    <Container as="section" className="mt-5">
       <Row className="mb-5">
         <Col className="text-center">
           <h1>Welcome to My Portfolio</h1>
@@ -28,28 +29,28 @@ export default function Page() {
       <Row className="mb-5 align-items-stretch">
         <Col md={6}>
           <Card>
-            <Card.Header className="bg-primary">Key Skills</Card.Header>
-            <Card.Body>
+            <CardHeader className="bg-primary">Key Skills</CardHeader>
+            <CardBody>
               <ListGroup variant="flush">
-                <ListGroup.Item>HTML, CSS, JavaScript</ListGroup.Item>
-                <ListGroup.Item>Agile Workflow</ListGroup.Item>
-                <ListGroup.Item>Customer Service</ListGroup.Item>
+                <ListGroupItem>HTML, CSS, JavaScript</ListGroupItem>
+                <ListGroupItem>Agile Workflow</ListGroupItem>
+                <ListGroupItem>Customer Service</ListGroupItem>
               </ListGroup>
-            </Card.Body>
+            </CardBody>
           </Card>
         </Col>
         <Col md={6}>
           <Card>
-            <Card.Header className="bg-primary">Featured Projects</Card.Header>
-            <Card.Body>
+            <CardHeader className="bg-primary">Featured Projects</CardHeader>
+            <CardBody>
               <ListGroup variant="flush">
-                <ListGroup.Item>E-commerce Websites</ListGroup.Item>
-                <ListGroup.Item>Full-stack Projects</ListGroup.Item>
+                <ListGroupItem>E-commerce Websites</ListGroupItem>
+                <ListGroupItem>Full-stack Projects</ListGroupItem>
               </ListGroup>
               <Button variant="primary" href="/portfolio" className="mt-3">
                 View Portfolio
               </Button>
-            </Card.Body>
+            </CardBody>
           </Card>
         </Col>
       </Row>
