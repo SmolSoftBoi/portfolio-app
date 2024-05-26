@@ -1,7 +1,5 @@
 import { readdirSync, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
-import { components } from '../components/mdx';
 
 export type Metadata = {
   title: string;
@@ -75,5 +73,5 @@ async function getMDXData(dir: string) {
 }
 
 export async function getBlogPosts() {
-  return await getMDXData(join(process.cwd(), 'src', 'app', 'blog', 'posts'));
+  return await getMDXData(join(process.cwd(), 'src', 'posts'));
 }
