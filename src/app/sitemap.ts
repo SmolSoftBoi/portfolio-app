@@ -8,9 +8,9 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split('T')[0],
   }));
 
-  let blogs = getBlogPosts().map((post) => ({
+  let blogs = (await getBlogPosts()).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
+    lastModified: post.frontmatter.publishedAt,
   }));
 
   return [...routes, ...blogs];

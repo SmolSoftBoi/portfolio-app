@@ -23,6 +23,7 @@ export default function Header() {
             className="media-object rounded-circle"
             src={profilePic}
             alt="Kristian Matthews-Kennington"
+            priority
           />
           <h1 className="profile-header-user">Kristian Matthews-Kennington</h1>
           <p className="profile-header-bio">

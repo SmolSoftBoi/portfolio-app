@@ -1,7 +1,9 @@
 import { readdirSync, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
+import { serialize } from 'next-mdx-remote/serialize';
+import { components } from '../components/mdx';
 
-type Metadata = {
+export type Metadata = {
   title: string;
   publishedAt: string;
   summary: string;
@@ -10,7 +12,9 @@ type Metadata = {
   imagePrompt?: string;
 };
 
-function parseFrontmatter(fileContent: string) {
+async function parseFrontmatter(
+  fileContent: string
+): Promise<{ frontmatter: Metadata; content: string }> {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
   let frontMatterBlock = match![1];
@@ -25,32 +29,51 @@ function parseFrontmatter(fileContent: string) {
     metadata[key.trim() as keyof Metadata] = value;
   });
 
-  return { metadata: metadata as Metadata, content };
+  return {
+    frontmatter: metadata as Metadata,
+    content: content,
+  };
+
+  /* return (
+    await serialize<Record<string, unknown>, Metadata>(fileContent, {
+      mdxOptions: {},
+      parseFrontmatter: true,
+    })
+  ).frontmatter; */
 }
 
 function getMDXFiles(dir: string) {
   return readdirSync(dir).filter((file) => extname(file) === '.mdx');
 }
 
-function readMDXFile(filePath: string) {
+async function readMDXFile(
+  filePath: string
+): Promise<{ frontmatter: Metadata; content: string }> {
   let rawContent = readFileSync(filePath, 'utf-8');
-  return parseFrontmatter(rawContent);
+  const { frontmatter, content } = await parseFrontmatter(rawContent);
+
+  return {
+    frontmatter: frontmatter,
+    content: content,
+  };
 }
 
-function getMDXData(dir: string) {
+async function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(join(dir, file));
-    let slug = basename(file, extname(file));
+  return await Promise.all(
+    mdxFiles.map(async (file) => {
+      let { frontmatter, content } = await readMDXFile(join(dir, file));
+      let slug = basename(file, extname(file));
 
-    return {
-      metadata,
-      slug,
-      content,
-    };
-  });
+      return {
+        frontmatter,
+        slug,
+        content,
+      };
+    })
+  );
 }
 
-export function getBlogPosts() {
-  return getMDXData(join(process.cwd(), 'src', 'app', 'blog', 'posts'));
+export async function getBlogPosts() {
+  return await getMDXData(join(process.cwd(), 'src', 'app', 'blog', 'posts'));
 }
