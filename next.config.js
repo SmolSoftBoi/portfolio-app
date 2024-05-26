@@ -2,10 +2,10 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  skipTrailingSlashRedirects: true,
   images: {
     unoptimized: true,
   },
+  transpilePackages: ['next-mdx-remote'],
 };
 
 module.exports = nextConfig;
