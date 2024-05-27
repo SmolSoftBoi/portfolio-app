@@ -25,7 +25,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <Container className="mt-5">
-      <SummarySection title="Welcome to My GPTs" summary='Discover my custom versions of ChatGPT that combine instructions, extra knowledge, and a combination of skills.' />
+      <SummarySection
+        title="Welcome to My GPTs"
+        summary="Discover my custom versions of ChatGPT that combine instructions, extra knowledge, and a combination of skills."
+      />
       <Row>
         {gpts.map((gpt, index) => (
           <Col md={6} key={index} className="mt-5 mb-4">

@@ -44,6 +44,16 @@ $profile-header-container-inner-width: $profile-header-container-inner-width *
 // 8. Add additional custom code here
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+h1,
+h2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+ol ul {
+  margin-bottom: 1rem;
+}
+
 @include color-mode(dark, true) {
   color-scheme: dark;
 
@@ -63,16 +73,6 @@ $profile-header-container-inner-width: $profile-header-container-inner-width *
 .profile-header-user {
   word-break: keep-all;
   font-size: 2rem;
-}
-
-h1,
-h2 {
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-ol ul {
-  margin-bottom: 1rem;
 }
 
 .card {
