@@ -40,12 +40,15 @@ export default function Header() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/about" active={pathname === '/about'}>
+            <Nav.Link href="/about" active={pathname.startsWith('/about')}>
               About Me
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/portfolio" active={pathname === '/portfolio'}>
+            <Nav.Link
+              href="/portfolio"
+              active={pathname.startsWith('/portfolio')}
+            >
               Portfolio
             </Nav.Link>
           </Nav.Item>

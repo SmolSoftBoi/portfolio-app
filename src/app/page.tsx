@@ -9,23 +9,22 @@ import {
   ListGroupItem,
   Row,
 } from 'react-bootstrap';
+import { Metadata } from 'next';
+import SummarySection from './components/SummarySection';
 
 export default function Page() {
   return (
     <Container as="section" className="mt-5">
-      <Row className="mb-5">
-        <Col className="text-center">
-          <h1>Welcome to My Portfolio</h1>
-          <p>
-            Hi, I&apos;m Kristian Matthews-Kennington, an ambitious software
+      <SummarySection
+        title="Welcome to My Portfolio"
+        summary="Hi, I'm Kristian Matthews-Kennington, an ambitious software
             developer specialized in web design and full-stack development.
-            I&apos;m passionate about creating impactful digital experiences.
-          </p>
-          <Button variant="primary" href="/about">
-            Learn More About Me
-          </Button>
-        </Col>
-      </Row>
+            I'm passionate about creating impactful digital experiences."
+      >
+        <Button variant="primary" href="/about">
+          Learn More About Me
+        </Button>
+      </SummarySection>
       <Row className="mb-5 align-items-stretch">
         <Col md={6}>
           <Card>

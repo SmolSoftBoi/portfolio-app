@@ -9,21 +9,23 @@ import {
   ListGroupItem,
 } from 'react-bootstrap';
 import Timeline, { TimelineItem } from '../components/Timeline';
+import { Metadata } from 'next';
+import SummarySection from '../components/SummarySection';
+
+export const metadata: Metadata = {
+  title: 'About Me',
+};
 
 export default function Page() {
   return (
     <Container className="mt-5">
-      <Row className="mb-5">
-        <Col className="text-center">
-          <h1>About Me</h1>
-          <p>
-            I&apos;m Kristian Matthews-Kennington, a BSc-educated software
+      <SummarySection
+        title="About Me"
+        summary="I'm Kristian Matthews-Kennington, a BSc-educated software
             developer with six years of experience. I specialize in web design
             and full-stack development, with a strong focus on creating
-            impactful digital experiences.
-          </p>
-        </Col>
-      </Row>
+            impactful digital experiences."
+      />
       <Row className="mb-5">
         <Col md={6}>
           <Card>
@@ -41,12 +43,16 @@ export default function Page() {
           <h2>Professional Experience</h2>
           <Timeline>
             <TimelineItem
-              title="Director at Cozy Glow"
-              content="Designed the brand and developed the original e-commerce website."
+              title="Meter Data Administrator at Engie"
+              content="Managed the meter data for a electricity and gas utilities."
             />
             <TimelineItem
               title="Co-Owner at M-K Enterprises"
               content="Actively engaged with customers and suppliers to ensure exceptional service."
+            />
+            <TimelineItem
+              title="Director at Cozy Glow"
+              content="Designed the brand and developed the original e-commerce website."
             />
           </Timeline>
         </Col>

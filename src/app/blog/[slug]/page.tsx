@@ -5,6 +5,7 @@ import { PropsWithRef } from 'react';
 import { baseUrl } from 'src/app/sitemap';
 import CustomMdx from 'src/app/components/CustomMdx';
 import Image from 'next/image';
+import SummarySection from '@/app/components/SummarySection';
 
 export async function generateStaticParams() {
   let posts = await getBlogPosts();
@@ -61,20 +62,20 @@ export default async function Blog({ params }: BlogProps) {
 
   return (
     <Container className="mt-5">
-      <Row className="mb-5">
-        <Col className="text-center">
-          <h1>{post.frontmatter.title}</h1>
-          {post.frontmatter.image ? (
-            <Image
-              src={`/posts/${post.frontmatter.image}`}
-              alt={post.frontmatter.title}
-              className="img-fluid rounded"
-              placeholder="blur"
-              priority
-            />
-          ) : null}
-        </Col>
-      </Row>
+      <SummarySection
+        title={post.frontmatter.title}
+        summary={post.frontmatter.summary}
+      >
+        {post.frontmatter.image ? (
+          <Image
+            src={`/posts/${post.frontmatter.image}`}
+            alt={post.frontmatter.title}
+            className="img-fluid rounded"
+            placeholder="blur"
+            priority
+          />
+        ) : null}
+      </SummarySection>
       <Row className="mb-5">
         <Col>
           <CustomMdx source={post.content} />
