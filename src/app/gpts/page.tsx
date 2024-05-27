@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import SummarySection from '../components/SummarySection';
 import gpts from '@/gpts';
 import GptCard from '../components/GptCard';
+import Gpts from '../components/Gpts';
 
 export interface Project {
   title: string;
@@ -29,13 +30,7 @@ export default function Page() {
         title="Welcome to My GPTs"
         summary="Discover my custom versions of ChatGPT that combine instructions, extra knowledge, and a combination of skills."
       />
-      <Row>
-        {gpts.map((gpt, index) => (
-          <Col md={6} key={index} className="mt-5 mb-4">
-            <GptCard gpt={gpt} />
-          </Col>
-        ))}
-      </Row>
+      <Gpts gpts={gpts} />
     </Container>
   );
 }
