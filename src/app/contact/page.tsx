@@ -1,6 +1,14 @@
+'use client';
+
 import { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
+import { Metadata } from 'next';
+import SummarySection from '../components/SummarySection';
+
+/* export const metadata: Metadata = {
+  title: 'Contact Me',
+}; */
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -44,11 +52,7 @@ export default function Contact() {
 
   return (
     <Container className="mt-5">
-      <Row>
-        <Col className="text-center mb-5">
-          <h1>Contact Me</h1>
-        </Col>
-      </Row>
+      <SummarySection title="Contact Me" />
       <Row>
         <Col md={6}>
           <Form onSubmit={handleSubmit}>

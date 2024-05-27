@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import {
   Container,
   Row,
@@ -6,20 +7,24 @@ import {
   Accordion,
   Button,
   ListGroupItem,
+  AccordionItem,
+  AccordionHeader,
+  AccordionBody,
 } from 'react-bootstrap';
+import SummarySection from '../components/SummarySection';
+
+export const metadata: Metadata = {
+  title: 'CV',
+};
 
 export default function Cv() {
   return (
     <Container className="mt-5">
-      <Row className="mb-5">
-        <Col className="text-center">
-          <h1>Kristian Matthews-Kennington</h1>
-          <p>
-            kristian@matthews-kennington.com | +44 7563 215490 | Oakenshaw,
-            United Kingdom
-          </p>
-        </Col>
-      </Row>
+      <SummarySection
+        title="Kristian Matthews-Kennington"
+        /* summary="kristian@matthews-kennington.com | +44 7563 215490 | Oakenshaw,
+            United Kingdom" */
+      />
       <Row className="mb-5">
         <Col md={6}>
           <h2>Core Competencies and Achievements</h2>
@@ -49,13 +54,13 @@ export default function Cv() {
         <Col>
           <h2>Professional Experience</h2>
           <Accordion defaultActiveKey="cozy-glow">
-            <Accordion.Item eventKey="cozy-glow">
-              <Accordion.Header>Director at Cozy Glow</Accordion.Header>
-              <Accordion.Body>
+            <AccordionItem eventKey="cozy-glow">
+              <AccordionHeader>Director at Cozy Glow</AccordionHeader>
+              <AccordionBody>
                 {/* Add your experience details here */}
                 Managed a team of 5, increased revenue by 20%, etc.
-              </Accordion.Body>
-            </Accordion.Item>
+              </AccordionBody>
+            </AccordionItem>
             {/* Add more for other experiences */}
           </Accordion>
         </Col>
