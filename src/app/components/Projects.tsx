@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
 import PortfolioCard from './PortfolioCard';
-import projects, { Project } from '@/projects';
+import { Project } from '@/projects';
 
 interface ProjectsProps {
   projects: Project[];
@@ -19,8 +19,8 @@ export default function Projects(props: ProjectsProps) {
 
   const filteredProjects =
     filter === 'All'
-      ? projects
-      : projects.filter((project) => project.techStack.includes(filter));
+      ? props.projects
+      : props.projects.filter((project) => project.techStack.includes(filter));
 
   return (
     <>
