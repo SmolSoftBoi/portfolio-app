@@ -1,5 +1,6 @@
 import barkProfilePic from '@/public/bark/profile-picture.png';
 import bearBeltsProfilePic from '@/public/bear-belts/profile-picture.png';
+import coulsdonPartnershipProfilePic from '@/public/coulsdon-partnership/profile-picture.png';
 import cozyGlowProfilePic from '@/public/cozy-glow/profile-picture.png';
 import nodeSublerProfilePic from '@/public/node-subler/profile-picture.png';
 import pocketBearsApparelProfilePic from '@/public/pocket-bears-apparel/profile-picture.png';
@@ -39,6 +40,13 @@ const projects: Project[] = [
     techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
     link: 'https://pocketbearsapparel.store',
     profileImage: pocketBearsApparelProfilePic,
+  },
+  {
+    title: 'Coulsdon Community Partnership',
+    description: 'A community website for the Coulsdon area in London.',
+    techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
+    link: 'https://coulsdonpartnership.org',
+    profileImage: coulsdonPartnershipProfilePic,
   },
   /* {
     title: 'Sizzle & Soak',
