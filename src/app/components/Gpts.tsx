@@ -47,7 +47,7 @@ export default function Gpts(props: GptsProps) {
       </Row>
       <Row>
         {filteredGpts.map((gpt, index) => (
-          <Col md={6} key={index} className="mt-5 mb-4">
+          <Col md={4} key={index} className="mb-4">
             <GptCard gpt={gpt} />
           </Col>
         ))}
