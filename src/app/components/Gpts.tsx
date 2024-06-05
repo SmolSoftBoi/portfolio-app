@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
-import { Gpt } from '@/gpts';
+import { Gpt, gptPacks } from '@/gpts';
 import GptCard from './GptCard';
 
 interface GptsProps {
@@ -33,14 +33,14 @@ export default function Gpts(props: GptsProps) {
           >
             All
           </Button>
-          {['Blog Manager', 'Product Development'].map((tech, index) => (
+          {gptPacks.map((pack, index) => (
             <Button
               key={index}
-              variant={`${filter === tech ? 'primary' : 'secondary'}`}
-              className={`ms-2 ${filter === tech ? 'active' : ''}`}
-              onClick={() => handleFilterChange(tech)}
+              variant={`${filter === pack ? 'primary' : 'secondary'}`}
+              className={`ms-2 ${filter === pack ? 'active' : ''}`}
+              onClick={() => handleFilterChange(pack)}
             >
-              {tech}
+              {pack}
             </Button>
           ))}
         </Col>

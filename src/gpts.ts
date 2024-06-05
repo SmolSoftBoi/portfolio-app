@@ -32,4 +32,8 @@ const gpts: Gpt[] = [
   },
 ];
 
+export const gptPacks: string[] = [
+  ...new Set(gpts.map((pack) => pack.pack)),
+].sort();
+
 export default gpts;
