@@ -24,6 +24,12 @@ const gpts: Gpt[] = [
     description: 'Poster strategy expert.',
     pack: 'Product Development',
   },
+  {
+    id: 'pehj541mM',
+    title: 'Sales Strategy Assistant',
+    description: 'A sales strategy assistant for ideation and planning.',
+    pack: 'Sales',
+  },
 ];
 
 export default gpts;
