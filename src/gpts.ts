@@ -32,6 +32,12 @@ const gpts: Gpt[] = [
     pack: 'Product Development',
   },
   {
+    id: 'R1TDgI5ww',
+    title: 'Product Label Development Assistant',
+    description: 'I create unique product label ideas for specific audiences.',
+    pack: 'Product Development',
+  },
+  {
     id: 'pehj541mM',
     title: 'Sales Strategy Assistant',
     description: 'A sales strategy assistant for ideation and planning.',
