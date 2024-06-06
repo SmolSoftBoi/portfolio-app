@@ -9,8 +9,9 @@ const gpts: Gpt[] = [
   {
     id: 'cpkMPDzj9',
     title: 'Advanced Social Media Strategist',
-    description: 'Creates consistent, efficient, customised social media strategies.',
-    pack: 'Social Media Manager'
+    description:
+      'Creates consistent, efficient, customised social media strategies.',
+    pack: 'Social Media Manager',
   },
   {
     id: '20gHoPEL3',
@@ -35,6 +36,13 @@ const gpts: Gpt[] = [
     title: 'Sales Strategy Assistant',
     description: 'A sales strategy assistant for ideation and planning.',
     pack: 'Sales',
+  },
+  {
+    id: 'kz6fvnGz4',
+    title: 'Social Media Calendar Assistant',
+    description:
+      'Expert at enhancing social media calendars with flair and clarity across industries.',
+    pack: 'Social Media Manager',
   },
 ];
 
