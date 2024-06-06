@@ -7,6 +7,12 @@ export interface Gpt {
 
 const gpts: Gpt[] = [
   {
+    id: 'cpkMPDzj9',
+    title: 'Advanced Social Media Strategist',
+    description: 'Creates consistent, efficient, customised social media strategies.',
+    pack: 'Social Media Manager'
+  },
+  {
     id: '20gHoPEL3',
     title: 'Apparel Development Assistant',
     description: 'Expert in apparel.',
