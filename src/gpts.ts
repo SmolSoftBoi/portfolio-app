@@ -44,6 +44,12 @@ const gpts: Gpt[] = [
       'Expert at enhancing social media calendars with flair and clarity across industries.',
     pack: 'Social Media Manager',
   },
+  {
+    id: '86hnq4Sqi',
+    title: 'Social Media Content Creator',
+    description: 'Expert at crafting standout social media content.',
+    pack: 'Social Media Manager',
+  },
 ];
 
 export const gptPacks: string[] = [
