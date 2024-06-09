@@ -26,6 +26,31 @@ const gpts: Gpt[] = [
     pack: 'Blog Manager',
   },
   {
+    id: 'CXqmylFwS',
+    title: 'Brand Builder',
+    description: 'Brand expert focused on research and optimisation.',
+    pack: 'Brand Builder',
+  },
+  {
+    id: 'XTtiergjL',
+    title: 'Business Formation Assistant',
+    description: 'Expert in forming tailored businesses.',
+    pack: 'Business Assistant',
+  },
+  {
+    id: 'wcbOFpwOc',
+    title: 'Business Planning Assistant',
+    description:
+      'Expert in business planning and communication, with a focus on clarity and professionalism.',
+    pack: 'Business Assistant',
+  },
+  {
+    id: 'zO9EapKW4',
+    title: 'Email Prospecting Assistant',
+    description: 'Friendly, detailed guide for crafting effective emails.',
+    pack: 'Sales',
+  },
+  {
     id: '3t54PuDS5',
     title: 'Poster Development Assistant',
     description: 'Poster strategy expert.',
@@ -44,6 +69,18 @@ const gpts: Gpt[] = [
     pack: 'Product Development',
   },
   {
+    id: 'mnMCGKCR7',
+    title: 'Sales Role Play Assistant',
+    description: 'Brainstorms sales ideas.',
+    pack: 'Sales',
+  },
+  {
+    id: 'CDG1Dq2Db',
+    title: 'Sales Script Assistant',
+    description: 'Expert in scripts and content creation for sales.',
+    pack: 'Sales',
+  },
+  {
     id: 'pehj541mM',
     title: 'Sales Strategy Assistant',
     description: 'A sales strategy assistant for ideation and planning.',
@@ -60,6 +97,12 @@ const gpts: Gpt[] = [
     id: '86hnq4Sqi',
     title: 'Social Media Content Creator',
     description: 'Expert at crafting standout social media content.',
+    pack: 'Social Media Manager',
+  },
+  {
+    id: 'cJDB5iDJ5',
+    title: 'Social Media Growth Coach',
+    description: 'Crafts personalised social media coaching.',
     pack: 'Social Media Manager',
   },
 ];
