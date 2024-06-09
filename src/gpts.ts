@@ -32,6 +32,12 @@ const gpts: Gpt[] = [
     pack: 'Product Development',
   },
   {
+    id: 'coAMcvFvn',
+    title: 'Printful Catalog',
+    description: "Expert guide for exploring Printful's catalog.",
+    pack: 'Actions',
+  },
+  {
     id: 'R1TDgI5ww',
     title: 'Product Label Development Assistant',
     description: 'I create unique product label ideas for specific audiences.',
