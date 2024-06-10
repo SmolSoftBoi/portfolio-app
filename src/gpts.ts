@@ -51,6 +51,13 @@ const gpts: Gpt[] = [
     pack: 'Sales',
   },
   {
+    id: 'FmjMUyGxS',
+    title: 'Literature Review Assistant',
+    description:
+      'Efficient and insightful reviewer with customisable reporting.',
+    pack: 'Research',
+  },
+  {
     id: '3t54PuDS5',
     title: 'Poster Development Assistant',
     description: 'Poster strategy expert.',
