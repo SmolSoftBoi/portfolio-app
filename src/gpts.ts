@@ -20,6 +20,13 @@ const gpts: Gpt[] = [
     pack: 'Product Development',
   },
   {
+    id: 'M4coYtWOQ',
+    title: 'Article Writing Assistant',
+    description:
+      'Streamlines article creation with clear language and cohesive structure.',
+    pack: 'Research',
+  },
+  {
     id: 'aqJNIv5y2',
     title: 'Blog Content Creater',
     description: 'I assist with new blog content, from name to content.',
@@ -45,6 +52,12 @@ const gpts: Gpt[] = [
     pack: 'Business Assistant',
   },
   {
+    id: '',
+    title: 'Data Analysis',
+    description: 'Expert in data analysis, tailored to specific roles.',
+    pack: 'Data Analysis',
+  },
+  {
     id: 'zO9EapKW4',
     title: 'Email Prospecting Assistant',
     description: 'Friendly, detailed guide for crafting effective emails.',
@@ -68,6 +81,12 @@ const gpts: Gpt[] = [
     title: 'Printful Catalog',
     description: "Expert guide for exploring Printful's catalog.",
     pack: 'Actions',
+  },
+  {
+    id: '4itFNo6xX',
+    title: 'Process Analysis',
+    description: 'Creative assistant for refining processes.',
+    pack: 'Data Analysis',
   },
   {
     id: 'R1TDgI5ww',
