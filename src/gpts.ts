@@ -76,6 +76,13 @@ const gpts: Gpt[] = [
     pack: 'Product Development',
   },
   {
+    id: '8riJxcbrM',
+    title: 'Research Question Formulation',
+    description:
+      'I create research questions, analysing and reimagining them creatively.',
+    pack: 'Research',
+  },
+  {
     id: 'mnMCGKCR7',
     title: 'Sales Role Play Assistant',
     description: 'Brainstorms sales ideas.',
