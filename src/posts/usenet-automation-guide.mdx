@@ -2,7 +2,17 @@
 title: 'A Comprehensive Guide to Usenet Automation'
 publishedAt: '2024-06-11'
 summary: 'Learn how to set up Usenet automation with detailed steps, tools, and tips for optimal performance and privacy.'
-keywords: ['Usenet', 'Automation', 'NZB', 'Sonarr', 'Radarr', 'Sabnzbd', 'Overseer', 'Plex']
+keywords:
+  [
+    'Usenet',
+    'Automation',
+    'NZB',
+    'Sonarr',
+    'Radarr',
+    'Sabnzbd',
+    'Overseer',
+    'Plex',
+  ]
 image: '/usenet-automation.jpg'
 imagePrompt: 'A person setting up Usenet automation on a computer, with various software icons such as Sabnzbd, Sonarr, Radarr, and Plex in the background.'
 ---
@@ -22,6 +32,7 @@ Using Usenet does come with costs. It’s important to be aware of subscription 
 ## Privacy Considerations
 
 There's an ongoing debate about the necessity of using a VPN with Usenet. While SSL encryption hides the content of your downloads from your ISP, your Usenet activity can still be visible. Research your indexer and Usenet provider's logging policies to ensure privacy. Here are two reliable options:
+
 - **NZBGeek:** Claims no logging except in special cases, with daily clearance. More details can be found [here](https://drive.google.com/open?id=1GYe9Rye-FXEjN9Y-ZrSTp_Z9iVcp7LYJ).
 - **Newsgroupdirect:** Claims no logging at all. More details can be found [here](https://drive.google.com/open?id=1pqKLXWSq21M0DKjMNY45728xKaElKQh1).
 
@@ -30,6 +41,7 @@ For added security, consider using a VPN, although it's not strictly necessary.
 ## Prerequisites
 
 Before diving into automation, you’ll need:
+
 1. **Usenet Provider:** Ensure they offer unlimited traffic, SSL, high retention (3000+ days), and a good number of connections (30+). [Newsgroupdirect](https://newsgroupdirect.com/member/billing/?planid=147) is recommended.
 2. **Downloader:** [Sabnzbd](https://sabnzbd.org/downloads) (recommended for newcomers).
 3. **TV PVR:** [Sonarr](https://sonarr.tv/#download).
@@ -43,21 +55,27 @@ Before diving into automation, you’ll need:
 ## Step-by-Step Setup
 
 ### 1. Usenet Provider
-Choose a provider like [Newsgroupdirect](https://newsgroupdirect.com/member/billing/?planid=147) and note down the server address and SSL port.
+
+Choose a provider like [Newsgroupdirect](https://newsgroupdirect.com) and note down the server address and SSL port.
 
 ### 2. Install Sabnzbd
-Download and install [Sabnzbd](https://sabnzbd.org/downloads). Follow the setup wizard, input your Usenet provider details, and save the API key for later use in Sonarr/Radarr.
+
+Download and install [Sabnzbd](https://sabnzbd.org). Follow the setup wizard, input your Usenet provider details, and save the API key for later use in Sonarr/Radarr.
 
 ### 3. Install and Configure Sonarr/Radarr
-Download [Sonarr](https://sonarr.tv/#download) and [Radarr](https://radarr.video/#download). Configure media management, quality settings, indexers, and download clients. Use the Sabnzbd API key for integration.
+
+Download [Sonarr](https://sonarr.tv) and [Radarr](https://radarr.video). Configure media management, quality settings, indexers, and download clients. Use the Sabnzbd API key for integration.
 
 ### 4. Setting Up Overseer (Optional)
-If sharing your media server, install [Overseer](https://github.com/sct/overseerr/releases) and configure it for request management and notifications.
+
+If sharing your media server, install [Overseer](https://github.com/sct/overseerr) and configure it for request management and notifications.
 
 ### 5. Media Organizer
-Install [Plex](https://www.plex.tv/media-server-downloads/) or [Emby](https://emby.media/download.html) for organizing and streaming your media.
+
+Install [Plex](https://www.plex.tv) or [Emby](https://emby.media) for organizing and streaming your media.
 
 ### 6. Import Existing Media
+
 In Sonarr/Radarr, import your existing media libraries for automatic management.
 
 ## Additional Tips
