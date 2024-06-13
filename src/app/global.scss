@@ -4,7 +4,8 @@
 @import '@smolpack/bootstrap-extensions/scss/functions';
 
 // 2. Include any default variable overrides here
-$primary: #53a817;
+@import 'variables.module';
+
 $secondary: #b0b0b4;
 
 $color-mode-type: media-query;
@@ -216,8 +217,4 @@ ol ul {
       transform: translateY(-50%);
     }
   }
-}
-
-:export {
-  primary: $primary;
 }
