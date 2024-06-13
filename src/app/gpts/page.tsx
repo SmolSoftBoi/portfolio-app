@@ -1,11 +1,10 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import type { StaticImageData } from 'next/image';
 import { Metadata } from 'next';
 import SummarySection from '../components/SummarySection';
 import gpts from '@/gpts';
-import GptCard from '../components/GptCard';
 import Gpts from '../components/Gpts';
 
 export interface Project {

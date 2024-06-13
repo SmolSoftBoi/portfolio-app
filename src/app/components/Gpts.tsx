@@ -5,6 +5,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 import { Gpt, gptPacks } from '@/gpts';
 import GptCard from './GptCard';
+import SupportButton from './SupportButton';
 
 interface GptsProps {
   gpts: Gpt[];
@@ -17,18 +18,13 @@ export default function Gpts(props: GptsProps) {
     setFilter(tech);
   };
 
-  const filteredGpts =
-    filter === 'All'
-      ? props.gpts
-      : props.gpts.filter((project) => project.pack.includes(filter));
-
   return (
     <>
       <Row>
-        <Col className="text-center mb-5">
+        <Col className="text-center mb-3">
           <Button
             variant={`${filter === 'All' ? 'primary' : 'secondary'}`}
-            className={filter === 'All' ? 'active' : ''}
+            className={`mb-2 ${filter === 'All' ? 'active' : ''}`}
             onClick={() => handleFilterChange('All')}
           >
             All
@@ -37,7 +33,7 @@ export default function Gpts(props: GptsProps) {
             <Button
               key={index}
               variant={`${filter === pack ? 'primary' : 'secondary'}`}
-              className={`ms-2 ${filter === pack ? 'active' : ''}`}
+              className={`mb-2 ms-2 ${filter === pack ? 'active' : ''}`}
               onClick={() => handleFilterChange(pack)}
             >
               {pack}
@@ -46,12 +42,20 @@ export default function Gpts(props: GptsProps) {
         </Col>
       </Row>
       <Row>
-        {filteredGpts.map((gpt, index) => (
-          <Col md={4} key={index} className="mb-4">
-            <GptCard gpt={gpt} />
-          </Col>
+        {props.gpts.map((gpt, index) => (
+          <GptCard key={index} gpt={gpt} />
         ))}
+        <Col
+          md={4}
+          className="mb-4 d-flex align-items-center justify-content-center"
+        >
+          <SupportButton />
+        </Col>
       </Row>
     </>
   );
 }
+
+Gpts.defaultProps = {
+  show: true,
+};

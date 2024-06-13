@@ -25,10 +25,10 @@ export default function Projects(props: ProjectsProps) {
   return (
     <>
       <Row>
-        <Col className="text-center mb-5">
+        <Col className="text-center mb-3">
           <Button
             variant={`${filter === 'All' ? 'primary' : 'secondary'}`}
-            className={filter === 'All' ? 'active' : ''}
+            className={`mb-2 filter === 'All' ? 'active' : ''`}
             onClick={() => handleFilterChange('All')}
           >
             All
@@ -45,7 +45,7 @@ export default function Projects(props: ProjectsProps) {
             <Button
               key={index}
               variant={`${filter === tech ? 'primary' : 'secondary'}`}
-              className={`ms-2 ${filter === tech ? 'active' : ''}`}
+              className={`mb-2 ms-2 ${filter === tech ? 'active' : ''}`}
               onClick={() => handleFilterChange(tech)}
             >
               {tech}
