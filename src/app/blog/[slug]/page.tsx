@@ -6,6 +6,8 @@ import { baseUrl } from 'src/app/sitemap';
 import CustomMdx from 'src/app/components/CustomMdx';
 import Image from 'next/image';
 import SummarySection from '@/app/components/SummarySection';
+import { KofiButton } from 'react-kofi-button';
+// import variables from '@/app/global.scss';
 
 export async function generateStaticParams() {
   let posts = await getBlogPosts();
@@ -79,6 +81,12 @@ export default async function Blog({ params }: BlogProps) {
       <Row className="mb-5">
         <Col>
           <CustomMdx source={post.content} />
+          <KofiButton
+            username={process.env.NEXT_PUBLIC_KOFI_USERNAME!}
+            label="Support Me"
+            // backgroundColor={variables.primary as string}
+            backgroundColor="#53a817"
+          />
         </Col>
       </Row>
     </Container>
