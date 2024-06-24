@@ -30,7 +30,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "18.3.1",
     "react-bootstrap": "^2.10.2",
-    "react-dom": "18.2.0",
+    "react-dom": "18.3.1",
     "react-kofi-button": "^0.7.1",
     "remark-gfm": "^4.0.0",
     "sharp": "^0.33.4",
