@@ -70,7 +70,7 @@ export default async function Blog({ params }: BlogProps) {
         {post.frontmatter.image ? (
           <Image
             src={`/posts/${post.frontmatter.image}`}
-            alt={post.frontmatter.title}
+            alt={post.frontmatter.imagePrompt || post.frontmatter.title}
             className="img-fluid rounded"
             placeholder="blur"
             priority
