@@ -54,11 +54,21 @@ $page-bg-dark: rgba($body-bg-dark, 0.825);
   --#{$prefix}page-bg: #{$page-bg};
 }
 
-body {
+body,
+.body-bg {
   background-color: $primary;
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
+}
+
+.body-bg {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
 }
 
 h1,
@@ -89,7 +99,11 @@ ol ul {
 
 .profile-header-user {
   word-break: keep-all;
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+.profile-header-nav {
+  overflow-x: scroll;
 }
 
 .page {
@@ -97,7 +111,7 @@ ol ul {
   backdrop-filter: blur($spacer);
   border-top: solid $white map-get($map: $border-widths, $key: 5);
   border-bottom: solid $white map-get($map: $border-widths, $key: 5);
-  padding-top: $spacer;
+  padding-top: 0;
 }
 
 .card {

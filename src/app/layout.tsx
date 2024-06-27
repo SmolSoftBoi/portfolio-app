@@ -45,12 +45,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={inter.className}
-        style={{
-          backgroundImage: `url(${profileHeader.src})`,
-        }}
-      >
+      <body className={inter.className}>
+        <div
+          className="body-bg"
+          style={{
+            backgroundImage: `url(${profileHeader.src})`,
+          }}
+        />
         <Header />
         <div className="page">{children}</div>
       </body>
