@@ -4,19 +4,13 @@ import { usePathname } from 'next/navigation';
 import { Nav, Container } from 'react-bootstrap';
 
 import profilePic from '@/public/profile-picture.jpg';
-import profileHeader from '@/public/profile-header.jpg';
 import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header
-      className="profile-header"
-      style={{
-        backgroundImage: `url(${profileHeader.src})`,
-      }}
-    >
+    <header className="profile-header">
       <Container className="p-4" fluid>
         <div className="container-inner">
           <Image

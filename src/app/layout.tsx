@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Header from './components/Header';
 import { ReactNode } from 'react';
 import { baseUrl } from './sitemap';
+import profileHeader from '@/public/profile-header.jpg';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,9 +45,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={inter.className}
+        style={{
+          backgroundImage: `url(${profileHeader.src})`,
+        }}
+      >
         <Header />
-        {children}
+        <div className="page">{children}</div>
       </body>
     </html>
   );
