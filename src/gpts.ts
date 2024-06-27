@@ -161,6 +161,12 @@ const gpts: Gpt[] = [
     a: 'SL',
   },
   {
+    id: 'xj087tGpB',
+    title: 'Trianglify',
+    description: 'Creates unique, aesthetically pleasing triangle patterns.',
+    pack: 'Images'
+  },
+  {
     id: 'q8gkKMGNs',
     title: 'Yodeyma',
     description: 'Focused on Yodeyma, and inspiring positive change.',
