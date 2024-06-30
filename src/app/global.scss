@@ -54,21 +54,11 @@ $page-bg-dark: rgba($body-bg-dark, 0.825);
   --#{$prefix}page-bg: #{$page-bg};
 }
 
-body,
-.body-bg {
+body {
   background-color: $primary;
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-}
-
-.body-bg {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
 }
 
 h1,
