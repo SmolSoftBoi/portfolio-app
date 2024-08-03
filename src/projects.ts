@@ -5,6 +5,7 @@ import cozyGlowProfilePic from '@/public/cozy-glow/profile-picture.png';
 import nodeSublerProfilePic from '@/public/node-subler/profile-picture.png';
 import pocketBearsApparelProfilePic from '@/public/pocket-bears-apparel/profile-picture.png';
 import sizzleSoakProfilePic from '@/public/sizzle-soak/profile-picture.png';
+import patternGeneratorProfilePic from '@/public/pattern-generator/profile-picture.png';
 import { StaticImageData } from 'next/image';
 
 export interface Project {
@@ -56,6 +57,14 @@ const projects: Project[] = [
     link: 'https://sizzleandsoak.store',
     profileImage: sizzleSoakProfilePic,
   }, */
+  {
+    title: 'Pattern Generator',
+    description:
+      'A versatile pattern generator built to create unique and customizable patterns for various uses.',
+    techStack: ['Node.js', 'TypeScript', 'HTML', 'CSS'],
+    link: 'https://smolsoftboi.github.io/pattern-generator',
+    profileImage: patternGeneratorProfilePic,
+  },
   {
     title: 'Node Subler',
     description: 'A Node.js library for interfacing with the Subler CLI.',
