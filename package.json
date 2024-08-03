@@ -34,7 +34,7 @@
     "react-kofi-button": "^0.7.1",
     "remark-gfm": "^4.0.0",
     "sharp": "^0.33.4",
-    "typescript": "5.4.5"
+    "typescript": "5.5.4"
   },
   "devDependencies": {
     "@smolpack/prettier-config": "^1.0.5",
