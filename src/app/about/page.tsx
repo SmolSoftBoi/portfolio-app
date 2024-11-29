@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardBody,
   ListGroupItem,
-} from 'react-bootstrap';
-import Timeline, { TimelineItem } from '../components/Timeline';
-import { Metadata } from 'next';
-import SummarySection from '../components/SummarySection';
+} from "react-bootstrap";
+import Timeline, { TimelineItem } from "../components/Timeline";
+import { Metadata } from "next";
+import SummarySection from "../components/SummarySection";
 
 export const metadata: Metadata = {
-  title: 'About Me',
+  title: "About Me",
 };
 
 export default function Page() {
@@ -21,10 +21,8 @@ export default function Page() {
     <Container className="mt-5">
       <SummarySection
         title="About Me"
-        summary="I'm Kristian Matthews-Kennington, a BSc-educated software
-            developer with six years of experience. I specialize in web design
-            and full-stack development, with a strong focus on creating
-            impactful digital experiences."
+        summary="I am a BSc-educated software developer with experience, specialising in web design and full-stack development.
+            I am passionate about creating impactful digital experiences."
       />
       <Row className="mb-5">
         <Col md={6}>
@@ -32,9 +30,14 @@ export default function Page() {
             <CardHeader className="bg-primary">Core Competencies</CardHeader>
             <CardBody>
               <ListGroup variant="flush">
-                <ListGroupItem>Customer Service</ListGroupItem>
-                <ListGroupItem>Team Player</ListGroupItem>
-                <ListGroupItem>Technological Skills</ListGroupItem>
+                <ListGroupItem>Digital Transformation</ListGroupItem>
+                <ListGroupItem>
+                  Process Improvement & Operational Excellence
+                </ListGroupItem>
+                <ListGroupItem>
+                  Data Analysis & Insight Generation
+                </ListGroupItem>
+                <ListGroupItem>Full-Stack Web Development</ListGroupItem>
               </ListGroup>
             </CardBody>
           </Card>
@@ -44,15 +47,23 @@ export default function Page() {
           <Timeline>
             <TimelineItem
               title="Meter Data Administrator at Engie"
-              content="Managed the meter data for a electricity and gas utilities."
+              content="Process improvement and collaboration across teams to boost operational efficiency and meter data accuracy."
             />
             <TimelineItem
               title="Co-Owner at M-K Enterprises"
-              content="Actively engaged with customers and suppliers to ensure exceptional service."
+              content="Actively manage supplier relationships, and engage with customers to ensure exceptional service, brand development, and financial oversight to optimise business operations."
             />
             <TimelineItem
               title="Director at Cozy Glow"
-              content="Designed the brand and developed the original e-commerce website."
+              content="Designed the brand strategy and developed the original e-commerce website. Directed e-commerce growth, and financial operations to drive consistent sales growth and market presence."
+            />
+            <TimelineItem
+              title="Software Developer at Bark.com"
+              content="Enhanced platform functionality and user interfaces to improve overall experience."
+            />
+            <TimelineItem
+              title="Junior Software Developer at Intuitive Systems"
+              content="Assisted in full-stack development and integrated third-party services to support platform scalability."
             />
           </Timeline>
         </Col>

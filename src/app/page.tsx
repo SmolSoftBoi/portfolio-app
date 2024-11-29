@@ -17,9 +17,10 @@ export default function Page() {
     <Container as="section" className="mt-5">
       <SummarySection
         title="Welcome to My Portfolio"
-        summary="Hi, I'm Kristian Matthews-Kennington, an ambitious software
-            developer specialized in web design and full-stack development.
-            I'm passionate about creating impactful digital experiences."
+        summary="Hi, I'm Kristian Matthews-Kennington, a results-driven professional specialising in process improvement, data analysis, and full-stack development.
+            I am passionate about delivering impactful, user-centered solutions that foster growth, efficiency, and innovation.
+            My experience includes enhancing customer service, continuous improvement, and creating scalable web solutions.
+            I thrive in environments utilising my diverse skill set to drive organisational success and technological advancement."
       >
         <Button variant="primary" href="/about">
           Learn More About Me
@@ -31,9 +32,10 @@ export default function Page() {
             <CardHeader className="bg-primary">Key Skills</CardHeader>
             <CardBody>
               <ListGroup variant="flush">
-                <ListGroupItem>HTML, CSS, JavaScript</ListGroupItem>
-                <ListGroupItem>Agile Workflow</ListGroupItem>
-                <ListGroupItem>Customer Service</ListGroupItem>
+                <ListGroupItem>Process Improvement & Operational Efficiency</ListGroupItem>
+                <ListGroupItem>Data Analysis & Insightst</ListGroupItem>
+                <ListGroupItem>Full-Stack Development</ListGroupItem>
+                <ListGroupItem>Relationship Management</ListGroupItem>
               </ListGroup>
             </CardBody>
           </Card>
