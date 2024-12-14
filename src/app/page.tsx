@@ -32,7 +32,9 @@ export default function Page() {
             <CardHeader className="bg-primary">Key Skills</CardHeader>
             <CardBody>
               <ListGroup variant="flush">
-                <ListGroupItem>Process Improvement & Operational Efficiency</ListGroupItem>
+                <ListGroupItem>
+                  Process Improvement & Operational Efficiency
+                </ListGroupItem>
                 <ListGroupItem>Data Analysis & Insightst</ListGroupItem>
                 <ListGroupItem>Full-Stack Development</ListGroupItem>
                 <ListGroupItem>Relationship Management</ListGroupItem>

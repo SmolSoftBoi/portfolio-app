@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardBody,
   ListGroupItem,
-} from "react-bootstrap";
-import Timeline, { TimelineItem } from "../components/Timeline";
-import { Metadata } from "next";
-import SummarySection from "../components/SummarySection";
+} from 'react-bootstrap';
+import Timeline, { TimelineItem } from '../components/Timeline';
+import { Metadata } from 'next';
+import SummarySection from '../components/SummarySection';
 
 export const metadata: Metadata = {
-  title: "About Me",
+  title: 'About Me',
 };
 
 export default function Page() {

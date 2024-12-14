@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { Nav, Container } from "react-bootstrap";
+import { usePathname } from 'next/navigation';
+import { Nav, Container } from 'react-bootstrap';
 
-import profilePic from "@/public/profile-picture.jpg";
-import Image from "next/image";
+import profilePic from '@/public/profile-picture.jpg';
+import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
@@ -33,25 +33,25 @@ export default function Header() {
       <div className="profile-header-nav">
         <Nav className="justify-content-center sticky-top" variant="tabs">
           <Nav.Item>
-            <Nav.Link href="/" active={pathname === "/"}>
+            <Nav.Link href="/" active={pathname === '/'}>
               Home
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/about" active={pathname.startsWith("/about")}>
+            <Nav.Link href="/about" active={pathname.startsWith('/about')}>
               About Me
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
               href="/portfolio"
-              active={pathname.startsWith("/portfolio")}
+              active={pathname.startsWith('/portfolio')}
             >
               Portfolio
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/gpts" active={pathname.startsWith("/gpts")}>
+            <Nav.Link href="/gpts" active={pathname.startsWith('/gpts')}>
               GPTs
             </Nav.Link>
           </Nav.Item>

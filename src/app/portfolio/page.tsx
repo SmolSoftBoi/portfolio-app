@@ -1,11 +1,11 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-import type { StaticImageData } from "next/image";
-import { Metadata } from "next";
-import projects from "@/projects";
-import SummarySection from "../components/SummarySection";
-import Projects from "../components/Projects";
+import type { StaticImageData } from 'next/image';
+import { Metadata } from 'next';
+import projects from '@/projects';
+import SummarySection from '../components/SummarySection';
+import Projects from '../components/Projects';
 
 export interface Project {
   title: string;
@@ -17,9 +17,9 @@ export interface Project {
 }
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: 'Portfolio',
   description: "Check out Kristian's portfolio for some awesome projects!",
-  keywords: ["portfolio", "full-stack", "development", "Shopify", "JavaScript"],
+  keywords: ['portfolio', 'full-stack', 'development', 'Shopify', 'JavaScript'],
 };
 
 export default function Page() {
