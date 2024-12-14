@@ -3,6 +3,7 @@ import { basename, extname, join } from 'path';
 
 export type Metadata = {
   title: string;
+  published: boolean;
   publishedAt: string;
   summary: string;
   keywords: string;

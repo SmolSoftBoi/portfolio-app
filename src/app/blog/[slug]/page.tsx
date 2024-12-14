@@ -25,7 +25,7 @@ type BlogProps = PropsWithRef<{
 export async function generateMetadata({ params }: BlogProps) {
   let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
 
-  if (!post) {
+  if (!post || !post.frontmatter.published) {
     return;
   }
 
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: BlogProps) {
 export default async function Blog({ params }: BlogProps) {
   let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
 
-  if (!post) {
+  if (!post || !post.frontmatter.published) {
     return notFound();
   }
 
