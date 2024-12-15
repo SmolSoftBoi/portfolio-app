@@ -50,11 +50,6 @@ export default function Header() {
               Portfolio
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/gpts" active={pathname.startsWith('/gpts')}>
-              GPTs
-            </Nav.Link>
-          </Nav.Item>
         </Nav>
       </div>
     </header>
