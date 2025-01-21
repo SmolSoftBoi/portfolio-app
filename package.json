@@ -10,7 +10,7 @@
     "lint": "next lint && prettier . --write"
   },
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=18.18.0"
   },
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
