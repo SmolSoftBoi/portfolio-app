@@ -4,7 +4,8 @@ import coulsdonPartnershipProfilePic from '@/public/coulsdon-partnership/profile
 import cozyGlowProfilePic from '@/public/cozy-glow/profile-picture.png';
 import nodeSublerProfilePic from '@/public/node-subler/profile-picture.png';
 import pocketBearsApparelProfilePic from '@/public/pocket-bears-apparel/profile-picture.png';
-import sizzleSoakProfilePic from '@/public/sizzle-soak/profile-picture.png';
+// import sizzleSoakProfilePic from '@/public/sizzle-soak/profile-picture.png';
+// import pomodoroProfilePic from '@/public/pomodoro-timer/profile-picture.png';
 import patternGeneratorProfilePic from '@/public/pattern-generator/profile-picture.png';
 import { StaticImageData } from 'next/image';
 
@@ -56,6 +57,14 @@ const projects: Project[] = [
     techStack: ['Shopify', 'JavaScript', 'HTML', 'CSS'],
     link: 'https://sizzleandsoak.store',
     profileImage: sizzleSoakProfilePic,
+  }, */
+  /* {
+    title: 'Pomodoro Timer',
+    description:
+      'A sleek, responsive Pomodoro timer app with custom animations, and task management.',
+    techStack: ['React', 'Next.js', 'TypeScript', 'CSS'],
+    link: 'https://github.com/SmolSoftBoi/pomodoro-timer', // GitHub repo or live app link
+    profileImage: pomodoroProfilePic,
   }, */
   {
     title: 'Pattern Generator',

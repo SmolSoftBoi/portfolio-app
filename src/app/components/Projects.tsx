@@ -13,10 +13,6 @@ interface ProjectsProps {
 export default function Projects(props: ProjectsProps) {
   const [filter, setFilter] = useState('All');
 
-  const handleFilterChange = (tech: string) => {
-    setFilter(tech);
-  };
-
   const filteredProjects =
     filter === 'All'
       ? props.projects
@@ -29,7 +25,7 @@ export default function Projects(props: ProjectsProps) {
           <Button
             variant={`${filter === 'All' ? 'primary' : 'secondary'}`}
             className={`mb-2 filter === 'All' ? 'active' : ''`}
-            onClick={() => handleFilterChange('All')}
+            onClick={() => setFilter('All')}
           >
             All
           </Button>
@@ -46,7 +42,7 @@ export default function Projects(props: ProjectsProps) {
               key={index}
               variant={`${filter === tech ? 'primary' : 'secondary'}`}
               className={`mb-2 ms-2 ${filter === tech ? 'active' : ''}`}
-              onClick={() => handleFilterChange(tech)}
+              onClick={() => setFilter(tech)}
             >
               {tech}
             </Button>
