@@ -24,8 +24,32 @@ async function parseFrontmatter(
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
+    key = key.trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+
+    switch (key) {
+      case 'title':
+        metadata.title = value;
+        break;
+      case 'published':
+        metadata.published = value === 'true';
+        break;
+      case 'publishedAt':
+        metadata.publishedAt = value;
+        break;
+      case 'summary':
+        metadata.summary = value;
+        break;
+      case 'keywords':
+        metadata.keywords = value;
+        break;
+      case 'image':
+        metadata.image = value;
+        break;
+      case 'imagePrompt':
+        metadata.imagePrompt = value;
+        break;
+    }
   });
 
   return {
