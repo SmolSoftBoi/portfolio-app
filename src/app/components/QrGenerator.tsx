@@ -1,8 +1,14 @@
 'use client';
 
-import React from 'react';
+import { useState, useEffect } from 'react';
 import {
+  Button,
+  CardBody,
+  CardText,
+  CardTitle,
   Col,
+  Figure,
+  FigureCaption,
   FloatingLabel,
   Form,
   FormControl,
@@ -10,38 +16,211 @@ import {
   Row,
 } from 'react-bootstrap';
 import QRCode from 'react-qr-code';
-
-const DEFAULT_QR_VALUE = 'https://kristian.matthews-kennington.com';
+import QrCard from './QrCard';
 
 export default function QrGenerator() {
-  const [inputValue, setInputValue] = React.useState<string>('');
+  const [type, setType] = useState('Text');
+  const [value, setValue] = useState<string>('');
+  const [inputTextValue, setInputTextValue] = useState<string>('');
+  const [inputUrlValue, setInputUrlValue] = useState<string>('');
+  const [inputSsidValue, setInputSsidValue] = useState<string>('');
+  const [inputPasswordValue, setInputPasswordValue] = useState<string>('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+  useEffect(() => {
+    switch (type) {
+      case 'Text':
+        setValue(inputTextValue.trim());
+        break;
+      case 'URL':
+        setValue(inputUrlValue.trim());
+        break;
+      case 'Wi-Fi':
+        setValue(
+          `WIFI:S:${inputSsidValue.trim()};T:WPA;P:${inputPasswordValue.trim()};;`
+        );
+        break;
+    }
+  }, [type, inputTextValue, inputUrlValue, inputSsidValue, inputPasswordValue]);
+
+  const handleButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    colorMode: 'light' | 'dark' = 'light'
+  ) => {
+    const svg = document.querySelector(`.bg-${colorMode} > svg`);
+    const svgData = new XMLSerializer().serializeToString(svg!);
+    const canvas = document.createElement('canvas');
+    const canvasContext = canvas.getContext('2d');
+    const image = new Image();
+    image.onload = () => {
+      canvas.width = image.width;
+      canvas.height = image.height;
+      canvasContext!.drawImage(image, 0, 0);
+      const pngFile = canvas.toDataURL('image/png');
+      const downloadLink = document.createElement('a');
+      downloadLink.download = `QR - ${type} - ${value} - ${colorMode}.png`;
+      downloadLink.href = `${pngFile}`;
+      downloadLink.click();
+    };
+    image.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   };
 
   return (
     <Row className="mb-5">
-      <Col>
+      <Col md={6} className="text-center mb-3">
         <Form>
-          <FormGroup>
-            <FloatingLabel label="Text or URL">
-              <FormControl
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Enter text or URL"
-              />
-            </FloatingLabel>
-          </FormGroup>
+          {[
+            'Text',
+            'URL',
+            // 'Email',
+            // 'Phone',
+            // 'SMS',
+            'Wi-Fi',
+          ].map((thisType, index) => (
+            <Button
+              key={index}
+              variant={`${type === thisType ? 'primary' : 'secondary'}`}
+              className={`mb-2 ms-2 ${type === thisType ? 'active' : ''}`}
+              onClick={() => setType(thisType)}
+            >
+              {thisType}
+            </Button>
+          ))}
+          {(() => {
+            switch (type) {
+              case 'Text':
+                return (
+                  <FormGroup>
+                    <FloatingLabel label="Text">
+                      <FormControl
+                        type="text"
+                        value={inputTextValue}
+                        onChange={(event) =>
+                          setInputTextValue(event.target.value)
+                        }
+                        placeholder="Enter text"
+                      />
+                    </FloatingLabel>
+                  </FormGroup>
+                );
+              case 'URL':
+                return (
+                  <FormGroup>
+                    <FloatingLabel label="URL">
+                      <FormControl
+                        type="url"
+                        value={inputUrlValue}
+                        onChange={(event) =>
+                          setInputUrlValue(event.target.value)
+                        }
+                        placeholder="Enter URL"
+                      />
+                    </FloatingLabel>
+                  </FormGroup>
+                );
+              case 'Wi-Fi':
+                return (
+                  <>
+                    <FormGroup>
+                      <FloatingLabel label="SSID">
+                        <FormControl
+                          type="text"
+                          value={inputSsidValue}
+                          onChange={(event) =>
+                            setInputSsidValue(event.target.value)
+                          }
+                          placeholder="Enter SSID"
+                        />
+                      </FloatingLabel>
+                    </FormGroup>
+                    <FormGroup>
+                      <FloatingLabel label="Password">
+                        <FormControl
+                          type="password"
+                          value={inputPasswordValue}
+                          onChange={(event) =>
+                            setInputPasswordValue(event.target.value)
+                          }
+                          placeholder="Enter password"
+                        />
+                      </FloatingLabel>
+                    </FormGroup>
+                  </>
+                );
+              default:
+                return null;
+            }
+          })()}
         </Form>
       </Col>
-      <Col>
-        <div>
-          <div className="d-inline-block img-thumbnail">
-            <QRCode key={inputValue} value={inputValue.trim() || DEFAULT_QR_VALUE} />
-          </div>
-        </div>
+      <Col md={6} className="mb-3">
+        <Row>
+          <Col xs={6} className="text-center mb-3">
+            <Figure>
+              <QrCard value={value} theme="light">
+                {(() => {
+                  switch (type) {
+                    case 'Text':
+                      return <CardBody>{inputTextValue}</CardBody>;
+                    case 'URL':
+                      return <CardBody>{inputUrlValue}</CardBody>;
+                    case 'Wi-Fi':
+                      return (
+                        <>
+                          <CardBody>
+                            <CardTitle>{inputSsidValue}</CardTitle>
+                            <CardText>{inputPasswordValue}</CardText>
+                          </CardBody>
+                        </>
+                      );
+                    default:
+                      return null;
+                  }
+                })()}
+              </QrCard>
+              <FigureCaption className="mt-3">Light</FigureCaption>
+            </Figure>
+            <Button
+              onClick={(event) => {
+                handleButtonClick(event, 'light');
+              }}
+            >
+              Download
+            </Button>
+          </Col>
+          <Col xs={6} className="text-center mb-3">
+            <Figure>
+              <QrCard value={value} theme="dark">
+                {(() => {
+                  switch (type) {
+                    case 'Text':
+                      return <CardBody>{inputTextValue}</CardBody>;
+                    case 'URL':
+                      return <CardBody>{inputUrlValue}</CardBody>;
+                    case 'Wi-Fi':
+                      return (
+                        <>
+                          <CardBody>
+                            <CardTitle>{inputSsidValue}</CardTitle>
+                            <CardText>{inputPasswordValue}</CardText>
+                          </CardBody>
+                        </>
+                      );
+                    default:
+                      return null;
+                  }
+                })()}
+              </QrCard>
+              <FigureCaption className="mt-3">Dark</FigureCaption>
+            </Figure>
+            <Button
+              onClick={(event) => {
+                handleButtonClick(event, 'dark');
+              }}
+            >
+              Download
+            </Button>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );
