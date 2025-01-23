@@ -35,7 +35,7 @@
     "react-kofi-button": "^0.7.1",
     "react-qr-code": "^2.0.15",
     "remark-gfm": "^4.0.0",
-    "sharp": "^0.33.4",
+    "sharp": "^0.33.5",
     "typescript": "5.5.4"
   },
   "devDependencies": {
