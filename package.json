@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
-    "@sendgrid/mail": "^8.1.0",
+    "@sendgrid/mail": "^8.1.4",
     "@smolpack/bootstrap-extensions": "^1.1.1",
     "@smolpack/react-bootstrap-extensions": "^0.5.1",
     "@stripe/react-stripe-js": "^2.9.0",
