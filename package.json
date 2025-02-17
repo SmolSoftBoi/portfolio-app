@@ -29,7 +29,7 @@
     "csv": "^6.3.11",
     "eslint": "8.56.0",
     "eslint-config-next": "15.1.6",
-    "next": "14.2.15",
+    "next": "15.1.7",
     "next-mdx-remote": "^5.0.0",
     "react": "18.3.1",
     "react-bootstrap": "^2.10.6",
