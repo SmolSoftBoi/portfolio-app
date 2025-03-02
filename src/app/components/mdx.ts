@@ -1,4 +1,3 @@
-import { MDXComponents } from '@mdx-js/react/lib';
 import React, { ComponentType, DetailedHTMLProps, HTMLAttributes } from 'react';
 import {
   FeaturedList,
@@ -43,7 +42,7 @@ function createHeading(
   return Heading;
 }
 
-export const components: MDXComponents = {
+export const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
