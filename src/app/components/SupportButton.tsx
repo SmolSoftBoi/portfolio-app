@@ -1,5 +1,4 @@
 import React from 'react';
-import KofiButton from 'react-kofi-button';
 import { primary } from '@/app/variables.module.scss';
 
 export default function SupportButton() {
@@ -9,11 +8,5 @@ export default function SupportButton() {
     return null;
   }
 
-  return (
-    <KofiButton
-      username={koFiUsername}
-      label="Support Me"
-      backgroundColor={primary}
-    />
-  );
+  return null;
 }
