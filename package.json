@@ -7,7 +7,7 @@
     "build": "next build",
     "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
     "start": "npx serve out",
-    "lint": "next lint && prettier . --write"
+    "lint": "eslint . && prettier . --write"
   },
   "engines": {
     "node": ">=18.18.0"
@@ -19,8 +19,8 @@
     "@smolpack/react-bootstrap-extensions": "^0.5.1",
     "@stripe/react-stripe-js": "^3.7.0",
     "@types/node": "24.0.13",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "@types/react-kofi-button": "^0.1.0",
     "axios": "^1.7.4",
     "bootstrap": "^5.3.2",
@@ -28,12 +28,12 @@
     "convex-helpers": "^0.1.68",
     "csv": "^6.3.11",
     "eslint": "9.21.0",
-    "eslint-config-next": "15.1.6",
-    "next": "14.2.15",
+    "eslint-config-next": "16.0.1",
+    "next": "16.0.1",
     "next-mdx-remote": "^5.0.0",
-    "react": "18.3.1",
+    "react": "19.2.0",
     "react-bootstrap": "^2.10.6",
-    "react-dom": "18.2.0",
+    "react-dom": "19.2.0",
     "react-kofi-button": "^0.7.1",
     "react-qr-code": "^2.0.15",
     "remark-gfm": "^4.0.0",
@@ -44,5 +44,9 @@
     "@smolpack/prettier-config": "^1.0.5",
     "sass": "^1.83.4"
   },
-  "prettier": "@smolpack/prettier-config"
+  "prettier": "@smolpack/prettier-config",
+  "resolutions": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
+  }
 }

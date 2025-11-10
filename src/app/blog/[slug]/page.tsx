@@ -22,7 +22,8 @@ type BlogProps = PropsWithRef<{
   };
 }>;
 
-export async function generateMetadata({ params }: BlogProps) {
+export async function generateMetadata(props: BlogProps) {
+  const params = await props.params;
   let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
 
   if (!post || !post.frontmatter.published) {
@@ -54,7 +55,8 @@ export async function generateMetadata({ params }: BlogProps) {
   };
 }
 
-export default async function Blog({ params }: BlogProps) {
+export default async function Blog(props: BlogProps) {
+  const params = await props.params;
   let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
 
   if (!post || !post.frontmatter.published) {
