@@ -10,7 +10,7 @@
     "lint": "eslint . && prettier . --write"
   },
   "engines": {
-    "node": ">=18.18.0"
+    "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
