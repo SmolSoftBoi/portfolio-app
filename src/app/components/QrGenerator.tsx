@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Button,
   CardBody,
@@ -20,25 +20,21 @@ import QrCard from './QrCard';
 
 export default function QrGenerator() {
   const [type, setType] = useState('Text');
-  const [value, setValue] = useState<string>('');
   const [inputTextValue, setInputTextValue] = useState<string>('');
   const [inputUrlValue, setInputUrlValue] = useState<string>('');
   const [inputSsidValue, setInputSsidValue] = useState<string>('');
   const [inputPasswordValue, setInputPasswordValue] = useState<string>('');
 
-  useEffect(() => {
+  const value = useMemo(() => {
     switch (type) {
       case 'Text':
-        setValue(inputTextValue.trim());
-        break;
+        return inputTextValue.trim();
       case 'URL':
-        setValue(inputUrlValue.trim());
-        break;
+        return inputUrlValue.trim();
       case 'Wi-Fi':
-        setValue(
-          `WIFI:S:${inputSsidValue.trim()};T:WPA;P:${inputPasswordValue.trim()};;`
-        );
-        break;
+        return `WIFI:S:${inputSsidValue.trim()};T:WPA;P:${inputPasswordValue.trim()};;`;
+      default:
+        return '';
     }
   }, [type, inputTextValue, inputUrlValue, inputSsidValue, inputPasswordValue]);
 
