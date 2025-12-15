@@ -15,33 +15,33 @@
 
 - ALWAYS use the new function syntax for Convex functions. For example:
   `typescript
-    import { query } from "./_generated/server";
-    import { v } from "convex/values";
-    export const f = query({
-        args: {},
-        returns: v.null(),
-        handler: async (ctx, args) => {
-        // Function body
-        },
-    });
-    `
+  import { query } from "./_generated/server";
+  import { v } from "convex/values";
+  export const f = query({
+      args: {},
+      returns: v.null(),
+      handler: async (ctx, args) => {
+      // Function body
+      },
+  });
+  `
 
 ### Http endpoint syntax
 
 - HTTP endpoints are defined in `convex/http.ts` and require an `httpAction` decorator. For example:
   `typescript
-    import { httpRouter } from "convex/server";
-    import { httpAction } from "./_generated/server";
-    const http = httpRouter();
-    http.route({
-        path: "/echo",
-        method: "POST",
-        handler: httpAction(async (ctx, req) => {
-        const body = await req.bytes();
-        return new Response(body, { status: 200 });
-        }),
-    });
-    `
+  import { httpRouter } from "convex/server";
+  import { httpAction } from "./_generated/server";
+  const http = httpRouter();
+  http.route({
+      path: "/echo",
+      method: "POST",
+      handler: httpAction(async (ctx, req) => {
+      const body = await req.bytes();
+      return new Response(body, { status: 200 });
+      }),
+  });
+  `
 - HTTP endpoints are always registered at the exact path you specify in the `path` field. For example, if you specify `/api/someRoute`, the endpoint will be registered at `/api/someRoute`.
 
 ### Function registration
@@ -61,7 +61,8 @@
 - Try to use as few calls from actions to queries and mutations as possible. Queries and mutations are transactions, so splitting logic up into multiple calls introduces the risk of race conditions.
 - All of these calls take in a `FunctionReference`. Do NOT try to pass the callee function directly into one of these calls.
 - When using `ctx.runQuery`, `ctx.runMutation`, or `ctx.runAction` to call a function in the same file, specify a type annotation on the return value to work around TypeScript circularity limitations. For example,
-  ```
+
+  ````
   export const f = query({
   args: { name: v.string() },
   returns: v.string(),
@@ -79,6 +80,7 @@
                               },
                             });
                             ```
+  ````
 
 ### Function references
 
@@ -147,7 +149,8 @@ q.search("body", "hello hi").eq("channel", "#general"),
 - Only use the `crons.interval` or `crons.cron` methods to schedule cron jobs. Do NOT use the `crons.hourly`, `crons.daily`, or `crons.weekly` helpers.
 - Both cron methods take in a FunctionReference. Do NOT try to pass the function directly into one of these methods.
 - Define crons by declaring the top-level `crons` object, calling some methods on it, and then exporting it as default. For example,
-  ```ts
+
+  ````ts
   import { cronJobs } from "convex/server";
   import { internal } from "./\_generated/api";
 
@@ -158,6 +161,8 @@ q.search("body", "hello hi").eq("channel", "#general"),
 
                             export default crons;
                             ```
+
+  ````
 
 - You can register Convex functions within `crons.ts` just like any other file.
 - If a cron calls an internal function, always import the `internal` object from '\_generated/api`, even if the internal function is registered in the same file.
