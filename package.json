@@ -27,7 +27,7 @@
     "convex": "^1.31.0",
     "convex-helpers": "^0.1.68",
     "csv": "^6.3.11",
-    "eslint": "9.39.1",
+    "eslint": "9.39.2",
     "eslint-config-next": "16.0.10",
     "next": "16.0.10",
     "next-mdx-remote": "^5.0.0",
