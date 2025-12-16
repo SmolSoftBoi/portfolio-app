@@ -52,6 +52,14 @@ $page-bg-dark: rgba($body-bg-dark, 0.825);
 :root,
 [data-bs-theme='light'] {
   --#{$prefix}page-bg: #{$page-bg};
+
+  /* “Glass” surface tokens (Apple-ish frosted look) */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-fallback: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.32);
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --glass-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 body {
@@ -80,6 +88,13 @@ ol ul {
   --#{$prefix}box-shadow-inset: #{$box-shadow-inset-dark};
 
   --#{$prefix}page-bg: #{$page-bg-dark};
+
+  --glass-bg: rgba(16, 16, 20, 0.58);
+  --glass-bg-fallback: rgba(16, 16, 20, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 28px 72px rgba(0, 0, 0, 0.45);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .profile-header {
@@ -95,14 +110,71 @@ ol ul {
 .profile-header-nav {
   overflow-x: auto;
   overflow-y: hidden;
+
+  .active {
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: $profile-header-nav-active-margin-left;
+      content: '';
+      border-right: $profile-header-nav-active-border-width solid transparent;
+      border-bottom: $profile-header-nav-active-border-width solid
+        var(--glass-bg);
+      border-left: $profile-header-nav-active-border-width solid transparent;
+    }
+
+    &::after {
+      border-bottom-color: var(--glass-highlight);
+    }
+  }
 }
 
 .page {
-  background-color: var(--#{$prefix}page-bg);
-  backdrop-filter: blur($spacer);
-  border-top: solid $white map-get($map: $border-widths, $key: 5);
-  border-bottom: solid $white map-get($map: $border-widths, $key: 5);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* Frosted glass surface */
+  background:
+    radial-gradient(
+      1200px 600px at 10% -10%,
+      var(--glass-highlight),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(180%);
+
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+
   padding-top: 0;
+
+  /* Fallback when blur isn't supported (e.g., some browsers / perf modes) */
+  @supports not (
+    (
+      backdrop-filter: blur(1px),
+    )
+  ) {
+    background:
+      radial-gradient(
+        1200px 600px at 10% -10%,
+        var(--glass-highlight),
+        rgba(255, 255, 255, 0) 60%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 55%
+      ),
+      var(--glass-bg-fallback);
+  }
 }
 
 .card {
