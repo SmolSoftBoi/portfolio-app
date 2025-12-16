@@ -251,6 +251,20 @@ ol ul {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .card,
+  .btn {
+    transform: none !important;
+  }
+}
+
 @keyframes appear {
   from {
     transform: scale(0.95);

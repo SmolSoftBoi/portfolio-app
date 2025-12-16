@@ -3,6 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { Nav, Container } from 'react-bootstrap';
 
+import Link from './Link';
+
 import profilePic from '@/public/profile-picture.jpg';
 import Image from 'next/image';
 
@@ -33,17 +35,22 @@ export default function Header() {
       <div className="profile-header-nav">
         <Nav className="justify-content-center sticky-top" variant="tabs">
           <Nav.Item>
-            <Nav.Link href="/" active={pathname === '/'}>
+            <Nav.Link as={Link} href="/" active={pathname === '/'}>
               Home
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/about" active={pathname.startsWith('/about')}>
+            <Nav.Link
+              as={Link}
+              href="/about"
+              active={pathname.startsWith('/about')}
+            >
               About Me
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
+              as={Link}
               href="/portfolio"
               active={pathname.startsWith('/portfolio')}
             >

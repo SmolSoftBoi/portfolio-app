@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardBody,
   CardHeader,
@@ -9,8 +8,8 @@ import {
   ListGroupItem,
   Row,
 } from 'react-bootstrap';
-import { Metadata } from 'next';
 import SummarySection from './components/SummarySection';
+import Link from './components/Link';
 
 export default function Page() {
   return (
@@ -22,9 +21,9 @@ export default function Page() {
             My experience includes enhancing customer service, continuous improvement, and creating scalable web solutions.
             I thrive in environments utilising my diverse skill set to drive organisational success and technological advancement."
       >
-        <Button variant="primary" href="/about">
+        <Link href="/about" className="btn btn-primary">
           Learn More About Me
-        </Button>
+        </Link>
       </SummarySection>
       <Row className="mb-5 align-items-stretch">
         <Col md={6}>
@@ -35,7 +34,7 @@ export default function Page() {
                 <ListGroupItem>
                   Process Improvement & Operational Efficiency
                 </ListGroupItem>
-                <ListGroupItem>Data Analysis & Insightst</ListGroupItem>
+                <ListGroupItem>Data Analysis & Insights</ListGroupItem>
                 <ListGroupItem>Full-Stack Development</ListGroupItem>
                 <ListGroupItem>Relationship Management</ListGroupItem>
               </ListGroup>
@@ -50,9 +49,9 @@ export default function Page() {
                 <ListGroupItem>E-commerce Websites</ListGroupItem>
                 <ListGroupItem>Full-stack Projects</ListGroupItem>
               </ListGroup>
-              <Button variant="primary" href="/portfolio" className="mt-3">
+              <Link href="/portfolio" className="btn btn-primary mt-3">
                 View Portfolio
-              </Button>
+              </Link>
             </CardBody>
           </Card>
         </Col>

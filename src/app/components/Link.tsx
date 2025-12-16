@@ -1,36 +1,41 @@
 import { default as NextLink } from 'next/link';
-import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
+import { AnchorHTMLAttributes, DetailedHTMLProps, forwardRef } from 'react';
 
 type LinkProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >;
 
-export default function Link({ href = '', children, ...rest }: LinkProps) {
-  let linkElement;
-
+const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+  { href = '', children, ...rest },
+  ref
+) {
   switch (true) {
     case href.startsWith('/'):
-      linkElement = (
-        <NextLink href={href} {...rest}>
+      return (
+        <NextLink href={href} ref={ref} {...rest}>
           {children}
         </NextLink>
       );
-      break;
     case href.startsWith('#'):
-      linkElement = (
-        <a href={href} {...rest}>
+      return (
+        <a href={href} ref={ref} {...rest}>
           {children}
         </a>
       );
-      break;
     default:
-      linkElement = (
-        <a href={href} target="_blank" rel="noopener noreferrer" {...rest}>
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          ref={ref}
+          {...rest}
+        >
           {children}
         </a>
       );
   }
+});
 
-  return linkElement;
-}
+export default Link;

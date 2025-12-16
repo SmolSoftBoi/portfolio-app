@@ -15,7 +15,23 @@ export const metadata: Metadata = {
     template: "%s | Kristian's Portfolio",
   },
   description: "Check out Kristian's portfolio for some awesome projects!",
-  icons: '/favicon.ico',
+  alternates: {
+    canonical: baseUrl,
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  keywords: [
+    'portfolio',
+    'full-stack development',
+    'software developer',
+    'process improvement',
+    'data analysis',
+    'Next.js',
+    'TypeScript',
+  ],
+  authors: [{ name: 'Kristian Matthews-Kennington', url: baseUrl }],
+  creator: 'Kristian Matthews-Kennington',
   openGraph: {
     title: "Kristian's Portfolio",
     description: "Check out Kristian's portfolio for some awesome projects!",
@@ -23,11 +39,18 @@ export const metadata: Metadata = {
     siteName: "Kristian's Portfolio",
     locale: 'en_GB',
     type: 'website',
+    images: [
+      {
+        url: profileHeader.src,
+        alt: "Header image for Kristian's portfolio",
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Kristian's Portfolio",
     description: "Check out Kristian's portfolio for some awesome projects!",
+    images: [profileHeader.src],
   },
   robots: {
     index: true,
@@ -51,8 +74,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           backgroundImage: `url(${profileHeader.src})`,
         }}
       >
+        <a className="visually-hidden-focusable" href="#main-content">
+          Skip to content
+        </a>
         <Header />
-        <div className="page">{children}</div>
+        <main id="main-content" className="page">
+          {children}
+        </main>
       </body>
     </html>
   );
