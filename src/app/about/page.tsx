@@ -46,6 +46,10 @@ export default function Page() {
           <h2>Professional Experience</h2>
           <Timeline>
             <TimelineItem
+              title="Market Operations Improvement Analyst at Engie"
+              content="Cross-team process improvement and data quality initiatives across Market Operations, using analysis and stakeholder collaboration to reduce rework and improve operational outcomes."
+            />
+            <TimelineItem
               title="Meter Data Administrator at Engie"
               content="Process improvement and collaboration across teams to boost operational efficiency and meter data accuracy."
             />
