@@ -19,7 +19,7 @@
     "@smolpack/react-bootstrap-extensions": "^0.5.1",
     "@stripe/react-stripe-js": "^5.4.1",
     "@types/node": "24.0.13",
-    "@types/react": "19.2.2",
+    "@types/react": "19.2.7",
     "@types/react-dom": "19.2.2",
     "@types/react-kofi-button": "^0.1.0",
     "axios": "^1.7.4",
@@ -31,7 +31,7 @@
     "eslint-config-next": "16.0.10",
     "next": "16.0.10",
     "next-mdx-remote": "^5.0.0",
-    "react": "19.2.0",
+    "react": "19.2.3",
     "react-bootstrap": "^2.10.6",
     "react-dom": "19.2.0",
     "react-kofi-button": "^0.7.1",
@@ -46,7 +46,7 @@
   },
   "prettier": "@smolpack/prettier-config",
   "resolutions": {
-    "@types/react": "19.2.2",
+    "@types/react": "19.2.7",
     "@types/react-dom": "19.2.2"
   }
 }
