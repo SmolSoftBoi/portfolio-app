@@ -25,7 +25,7 @@
     "axios": "^1.7.4",
     "bootstrap": "^5.3.2",
     "convex": "^1.31.0",
-    "convex-helpers": "^0.1.68",
+    "convex-helpers": "^0.1.108",
     "csv": "^6.3.11",
     "eslint": "9.39.2",
     "eslint-config-next": "16.0.10",
