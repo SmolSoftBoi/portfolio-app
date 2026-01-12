@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@smolpack/prettier-config": "^1.0.5",
-    "sass": "^1.97.1"
+    "sass": "^1.97.2"
   },
   "prettier": "@smolpack/prettier-config",
   "resolutions": {
