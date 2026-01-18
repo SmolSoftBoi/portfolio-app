@@ -19,14 +19,6 @@ async function sendEmail(
   };
   try {
     await sgMail.send(msg);
-    console.log(
-      `Received contact form data: ${JSON.stringify({
-        name,
-        email,
-        subject,
-        message,
-      })}`
-    );
   } catch (error) {
     console.error(error);
     throw new Error('Failed to send email');
