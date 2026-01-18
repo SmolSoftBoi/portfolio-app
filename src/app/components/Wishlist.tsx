@@ -18,7 +18,7 @@ export default function Wishlist(props: WishlistProps) {
   return (
     <Row>
       {props.wishlist.map((item, index) => (
-        <Col md={4} key={index} className="mb-4">
+        <Col md={4} key={item.url} className="mb-4">
           <Card>
             <CardBody>
               <CardTitle>{item.name}</CardTitle>
