@@ -42,9 +42,11 @@ export default function Gpts(props: GptsProps) {
         </Col>
       </Row>
       <Row>
-        {props.gpts.map((gpt, index) => (
-          <GptCard key={index} gpt={gpt} />
-        ))}
+        {props.gpts
+          .filter((gpt) => filter === 'All' || gpt.pack === filter)
+          .map((gpt, index) => (
+            <GptCard key={index} gpt={gpt} />
+          ))}
         <Col
           md={4}
           className="mb-4 d-flex align-items-center justify-content-center"
