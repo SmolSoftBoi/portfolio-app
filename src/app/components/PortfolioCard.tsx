@@ -42,21 +42,26 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {props.project.techStack.map((tech) => (
-            <OverlayTrigger
-              key={tech}
-              placement="top"
-              overlay={
-                <Tooltip id={`tooltip-${tech}`}>
-                  {techDescriptions[tech]}
-                </Tooltip>
-              }
-            >
-              <Badge bg="light" text="dark" className="me-1" pill>
-                {tech}
-              </Badge>
-            </OverlayTrigger>
-          ))}
+          {props.project.techStack.map((tech) => {
+            const safeTechId = tech
+              .replace(/[^a-zA-Z0-9-]/g, '-')
+              .toLowerCase();
+            return (
+              <OverlayTrigger
+                key={tech}
+                placement="top"
+                overlay={
+                  <Tooltip id={`tooltip-${safeTechId}`}>
+                    {techDescriptions[tech]}
+                  </Tooltip>
+                }
+              >
+                <Badge bg="light" text="dark" className="me-1" pill>
+                  {tech}
+                </Badge>
+              </OverlayTrigger>
+            );
+          })}
         </Card.Text>
         <div className="mt-auto">
           <Button
