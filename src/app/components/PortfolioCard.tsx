@@ -28,6 +28,10 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     TypeScript: 'Programming language for building web applications',
   };
 
+  const safeTitleId = props.project.title
+    .replace(/[^a-zA-Z0-9-]/g, '-')
+    .toLowerCase();
+
   return (
     <Card className="profile-variant h-100">
       <CardBody className="d-flex flex-column">
@@ -51,7 +55,7 @@ export default function PortfolioCard(props: PortfolioCardProps) {
                 key={tech}
                 placement="top"
                 overlay={
-                  <Tooltip id={`tooltip-${safeTechId}`}>
+                  <Tooltip id={`tooltip-${safeTitleId}-${safeTechId}`}>
                     {techDescriptions[tech]}
                   </Tooltip>
                 }
