@@ -29,9 +29,9 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     TypeScript: 'Programming language for building web applications',
   };
 
-  const safeTitleId = useMemo(() => {
-    return props.project.title.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
-  }, [props.project.title]);
+  const safeTitleId = props.project.title
+    .replace(/[^a-zA-Z0-9-]/g, '-')
+    .toLowerCase();
 
   const sanitizedTechStack = useMemo(() => {
     return props.project.techStack.map((tech) => ({
