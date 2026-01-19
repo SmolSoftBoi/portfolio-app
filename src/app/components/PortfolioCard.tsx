@@ -33,6 +33,13 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     return props.project.title.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
   }, [props.project.title]);
 
+  const sanitizedTechStack = useMemo(() => {
+    return props.project.techStack.map((tech) => ({
+      original: tech,
+      safeId: tech.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase(),
+    }));
+  }, [props.project.techStack]);
+
   return (
     <Card className="profile-variant h-100">
       <CardBody className="d-flex flex-column">
@@ -47,26 +54,21 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {props.project.techStack.map((tech) => {
-            const safeTechId = tech
-              .replace(/[^a-zA-Z0-9-]/g, '-')
-              .toLowerCase();
-            return (
-              <OverlayTrigger
-                key={tech}
-                placement="top"
-                overlay={
-                  <Tooltip id={`tooltip-${safeTitleId}-${safeTechId}`}>
-                    {techDescriptions[tech]}
-                  </Tooltip>
-                }
-              >
-                <Badge bg="light" text="dark" className="me-1" pill>
-                  {tech}
-                </Badge>
-              </OverlayTrigger>
-            );
-          })}
+          {sanitizedTechStack.map(({ original, safeId }) => (
+            <OverlayTrigger
+              key={original}
+              placement="top"
+              overlay={
+                <Tooltip id={`tooltip-${safeTitleId}-${safeId}`}>
+                  {techDescriptions[original]}
+                </Tooltip>
+              }
+            >
+              <Badge bg="light" text="dark" className="me-1" pill>
+                {original}
+              </Badge>
+            </OverlayTrigger>
+          ))}
         </Card.Text>
         <div className="mt-auto">
           <Button
