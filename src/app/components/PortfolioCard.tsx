@@ -42,12 +42,12 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {props.project.techStack.map((tech, index) => (
+          {props.project.techStack.map((tech) => (
             <OverlayTrigger
-              key={index}
+              key={tech}
               placement="top"
               overlay={
-                <Tooltip id={`tooltip-${index}`}>
+                <Tooltip id={`tooltip-${tech}`}>
                   {techDescriptions[tech]}
                 </Tooltip>
               }
