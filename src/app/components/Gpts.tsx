@@ -45,7 +45,7 @@ export default function Gpts(props: GptsProps) {
         {props.gpts
           .filter((gpt) => filter === 'All' || gpt.pack === filter)
           .map((gpt, index) => (
-            <GptCard key={index} gpt={gpt} />
+            <GptCard key={gpt.id} gpt={gpt} />
           ))}
         <Col
           md={4}
