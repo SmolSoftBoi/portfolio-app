@@ -54,9 +54,9 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {sanitizedTechStack.map(({ original, safeId }) => (
+          {sanitizedTechStack.map(({ original, safeId }, index) => (
             <OverlayTrigger
-              key={original}
+              key={`${original}-${index}`}
               placement="top"
               overlay={
                 <Tooltip id={`tooltip-${safeTitleId}-${safeId}`}>
