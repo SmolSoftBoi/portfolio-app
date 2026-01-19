@@ -46,13 +46,13 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {props.project.techStack.map((tech) => {
+          {props.project.techStack.map((tech, index) => {
             const safeTechId = tech
               .replace(/[^a-zA-Z0-9-]/g, '-')
               .toLowerCase();
             return (
               <OverlayTrigger
-                key={tech}
+                key={`${safeTechId}-${index}`}
                 placement="top"
                 overlay={
                   <Tooltip id={`tooltip-${safeTitleId}-${safeTechId}`}>
