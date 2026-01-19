@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Image from 'next/image';
 import {
   Badge,
@@ -28,9 +29,9 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     TypeScript: 'Programming language for building web applications',
   };
 
-  const safeTitleId = props.project.title
-    .replace(/[^a-zA-Z0-9-]/g, '-')
-    .toLowerCase();
+  const safeTitleId = useMemo(() => {
+    return props.project.title.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
+  }, [props.project.title]);
 
   return (
     <Card className="profile-variant h-100">
@@ -46,13 +47,13 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Card.Text>{props.project.description}</Card.Text>
         <Card.Subtitle>Tech Stack</Card.Subtitle>
         <Card.Text>
-          {props.project.techStack.map((tech, index) => {
+          {props.project.techStack.map((tech) => {
             const safeTechId = tech
               .replace(/[^a-zA-Z0-9-]/g, '-')
               .toLowerCase();
             return (
               <OverlayTrigger
-                key={`${safeTechId}-${index}`}
+                key={tech}
                 placement="top"
                 overlay={
                   <Tooltip id={`tooltip-${safeTitleId}-${safeTechId}`}>
