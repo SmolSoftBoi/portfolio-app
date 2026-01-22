@@ -14,6 +14,7 @@ const config: Config = {
       'ts-jest',
       {
         tsconfig: 'tsconfig.json',
+        useESM: true,
       },
     ],
   },
