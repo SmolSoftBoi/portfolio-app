@@ -50,8 +50,8 @@ export default function Projects(props: ProjectsProps) {
         </Col>
       </Row>
       <Row>
-        {filteredProjects.map((project, index) => (
-          <Col md={4} key={index} className="mt-5 mb-4">
+        {filteredProjects.map((project) => (
+          <Col md={4} key={project.title} className="mt-5 mb-4">
             <PortfolioCard project={project} />
           </Col>
         ))}
