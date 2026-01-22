@@ -71,9 +71,9 @@ export default function QrGenerator() {
             // 'Phone',
             // 'SMS',
             'Wi-Fi',
-          ].map((thisType, index) => (
+          ].map((thisType) => (
             <Button
-              key={index}
+              key={thisType}
               variant={`${type === thisType ? 'primary' : 'secondary'}`}
               className={`mb-2 ms-2 ${type === thisType ? 'active' : ''}`}
               onClick={() => setType(thisType)}

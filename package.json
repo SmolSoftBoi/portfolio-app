@@ -7,7 +7,8 @@
     "build": "next build",
     "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
     "start": "npx serve out",
-    "lint": "eslint . && prettier . --write"
+    "lint": "eslint . && prettier . --write",
+    "test": "jest"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
@@ -42,7 +43,15 @@
   },
   "devDependencies": {
     "@smolpack/prettier-config": "^1.0.5",
-    "sass": "^1.97.1"
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/jest": "^29.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sass": "^1.97.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1"
   },
   "prettier": "@smolpack/prettier-config",
   "resolutions": {
