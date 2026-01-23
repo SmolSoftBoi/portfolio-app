@@ -29,7 +29,7 @@ describe('Contact API', () => {
     process.env = OLD_ENV;
   });
 
-  it('measures execution time of handler', async () => {
+  it('measures execution time of handler (benchmark)', async () => {
     const DELAY = 100;
 
     // Mock sendEmail to take DELAY ms
@@ -74,5 +74,122 @@ describe('Contact API', () => {
     expect(sgMail.send).toHaveBeenCalled();
     expect(axios.post).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
+  });
+
+  it('returns 200 on successful submission', async () => {
+    (sgMail.send as jest.Mock).mockResolvedValue([{}, {}]);
+    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+
+    const req = {
+      method: 'POST',
+      body: {
+        name: 'Test',
+        email: 'test@example.com',
+        subject: 'Subject',
+        message: 'Message',
+      },
+    } as unknown as NextApiRequest;
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Form submitted successfully.' });
+  });
+
+  it('returns 400 when required fields are missing', async () => {
+    const req = {
+      method: 'POST',
+      body: {
+        // Missing name
+        email: 'test@example.com',
+        subject: 'Subject',
+        message: 'Message',
+      },
+    } as unknown as NextApiRequest;
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ error: 'All fields are required.' });
+    expect(sgMail.send).not.toHaveBeenCalled();
+    expect(axios.post).not.toHaveBeenCalled();
+  });
+
+  it('returns 500 when sending email fails', async () => {
+    (sgMail.send as jest.Mock).mockRejectedValue(new Error('Email error'));
+    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+
+    const req = {
+      method: 'POST',
+      body: {
+        name: 'Test',
+        email: 'test@example.com',
+        subject: 'Subject',
+        message: 'Message',
+      },
+    } as unknown as NextApiRequest;
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    expect(console.error).toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Internal server error.' });
+  });
+
+  it('returns 500 when sending notification fails', async () => {
+    (sgMail.send as jest.Mock).mockResolvedValue([{}, {}]);
+    (axios.post as jest.Mock).mockRejectedValue(new Error('Notification error'));
+
+    const req = {
+      method: 'POST',
+      body: {
+        name: 'Test',
+        email: 'test@example.com',
+        subject: 'Subject',
+        message: 'Message',
+      },
+    } as unknown as NextApiRequest;
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    expect(console.error).toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Internal server error.' });
+  });
+
+  it('returns 405 for non-POST requests', async () => {
+    const req = {
+      method: 'GET',
+    } as unknown as NextApiRequest;
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      end: jest.fn(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(405);
+    expect(res.end).toHaveBeenCalled();
   });
 });
