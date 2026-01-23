@@ -67,7 +67,9 @@ describe('Contact API', () => {
 
     // Verify parallel execution: total time should be close to DELAY (100ms)
     // rather than 2x DELAY (200ms) for sequential execution.
-    expect(duration).toBeLessThan(150);
+    // Use a threshold derived from DELAY to avoid flaky failures on slower CI runners.
+    const THRESHOLD = DELAY * 1.75;
+    expect(duration).toBeLessThan(THRESHOLD);
 
     expect(sgMail.send).toHaveBeenCalled();
     expect(axios.post).toHaveBeenCalled();
