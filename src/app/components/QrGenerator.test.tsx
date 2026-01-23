@@ -28,7 +28,6 @@ jest.mock('./QrCard', () => {
 });
 
 describe('QrGenerator', () => {
-  let originalCreateElement: typeof document.createElement;
 
   beforeAll(() => {
     // Mock XMLSerializer for SVG serialization
