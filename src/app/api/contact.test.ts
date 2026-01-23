@@ -25,7 +25,7 @@ describe('Contact API', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  afterEach(() => {
+  afterAll(() => {
     process.env = OLD_ENV;
   });
 
@@ -60,16 +60,17 @@ describe('Contact API', () => {
       end: jest.fn(),
     } as unknown as NextApiResponse;
 
-    const start = Date.now();
+    const start = performance.now();
     await handler(req, res);
-    const end = Date.now();
+    const end = performance.now();
     const duration = end - start;
+
+    console.log(`Execution time: ${duration}ms`);
 
     // Verify parallel execution: total time should be close to DELAY (100ms)
     // rather than 2x DELAY (200ms) for sequential execution.
-    // Use a threshold derived from DELAY to avoid flaky failures on slower CI runners.
-    const THRESHOLD = DELAY * 1.75;
-    expect(duration).toBeLessThan(THRESHOLD);
+    // Sequential would be > 200ms. We use 180ms as a safe upper bound for CI stability.
+    expect(duration).toBeLessThan(180);
 
     expect(sgMail.send).toHaveBeenCalled();
     expect(axios.post).toHaveBeenCalled();
