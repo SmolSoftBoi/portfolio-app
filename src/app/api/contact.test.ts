@@ -67,6 +67,10 @@ describe('Contact API', () => {
 
     console.log(`Execution time: ${duration}ms`);
 
+    // Verify parallel execution: total time should be close to DELAY (100ms)
+    // rather than 2x DELAY (200ms) for sequential execution.
+    expect(duration).toBeLessThan(150);
+
     expect(sgMail.send).toHaveBeenCalled();
     expect(axios.post).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
