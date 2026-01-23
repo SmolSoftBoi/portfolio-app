@@ -68,8 +68,10 @@ export default async function handler(
 
     // Send email and notification
     try {
-      await sendEmail(name, email, subject, message);
-      await sendNotification('New contact form submission', `From ${name}`);
+      await Promise.all([
+        sendEmail(name, email, subject, message),
+        sendNotification('New contact form submission', `From ${name}`),
+      ]);
       res.status(200).json({ message: 'Form submitted successfully.' });
     } catch (error) {
       console.error(error);
