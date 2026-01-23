@@ -25,7 +25,7 @@ describe('Contact API', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  afterAll(() => {
+  afterEach(() => {
     process.env = OLD_ENV;
   });
 
