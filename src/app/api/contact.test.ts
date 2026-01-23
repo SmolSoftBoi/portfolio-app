@@ -65,7 +65,7 @@ describe('Contact API', () => {
     const end = Date.now();
     const duration = end - start;
 
-    console.info(`Execution time: ${duration}ms`);
+    console.log(`Execution time: ${duration}ms`);
 
     expect(sgMail.send).toHaveBeenCalled();
     expect(axios.post).toHaveBeenCalled();
