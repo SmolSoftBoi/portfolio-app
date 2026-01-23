@@ -71,8 +71,6 @@ describe('Contact API', () => {
     const end = performance.now();
     const duration = end - start;
 
-    console.log(`Execution time: ${duration}ms`);
-
     expect(duration).toBeLessThan(180);
 
     expect(mockSend).toHaveBeenCalled();
