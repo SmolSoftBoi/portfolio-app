@@ -65,8 +65,6 @@ describe('Contact API', () => {
     const end = Date.now();
     const duration = end - start;
 
-    console.log(`Execution time: ${duration}ms`);
-
     // Verify parallel execution: total time should be close to DELAY (100ms)
     // rather than 2x DELAY (200ms) for sequential execution.
     expect(duration).toBeLessThan(150);
