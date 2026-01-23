@@ -1,16 +1,10 @@
-import handler from './contact';
-import sgMail from '@sendgrid/mail';
-import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-jest.mock('@sendgrid/mail');
-jest.mock('axios');
 
 describe('Contact API', () => {
   const OLD_ENV = process.env;
 
   beforeEach(() => {
-    jest.resetModules();
+    jest.resetModules(); // Clear module cache
     process.env = {
       ...OLD_ENV,
       SENDGRID_API_KEY: 'test-key',
@@ -20,6 +14,7 @@ describe('Contact API', () => {
       NOTIFICATION_ACCESS_TOKEN: 'test-token',
     };
     jest.clearAllMocks();
+
     // Suppress console logs during tests to keep output clean
     jest.spyOn(console, 'log').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -32,17 +27,28 @@ describe('Contact API', () => {
   it('measures execution time of handler (benchmark)', async () => {
     const DELAY = 100;
 
-    // Mock sendEmail to take DELAY ms
-    (sgMail.send as jest.Mock).mockImplementation(async () => {
+    // Define mock functions
+    const mockSend = jest.fn().mockImplementation(async () => {
       await new Promise((resolve) => setTimeout(resolve, DELAY));
       return [{}, {}];
     });
 
-    // Mock sendNotification (axios.post) to take DELAY ms
-    (axios.post as jest.Mock).mockImplementation(async () => {
+    const mockPost = jest.fn().mockImplementation(async () => {
       await new Promise((resolve) => setTimeout(resolve, DELAY));
       return { data: {} };
     });
+
+    // Apply mocks
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: mockSend,
+    }));
+    jest.doMock('axios', () => ({
+      post: mockPost,
+    }));
+
+    // Import handler AFTER mocks
+    const handler = require('./contact').default;
 
     const req = {
       method: 'POST',
@@ -67,19 +73,26 @@ describe('Contact API', () => {
 
     console.log(`Execution time: ${duration}ms`);
 
-    // Verify parallel execution: total time should be close to DELAY (100ms)
-    // rather than 2x DELAY (200ms) for sequential execution.
-    // Sequential would be > 200ms. We use 180ms as a safe upper bound for CI stability.
     expect(duration).toBeLessThan(180);
 
-    expect(sgMail.send).toHaveBeenCalled();
-    expect(axios.post).toHaveBeenCalled();
+    expect(mockSend).toHaveBeenCalled();
+    expect(mockPost).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
   });
 
   it('returns 200 on successful submission', async () => {
-    (sgMail.send as jest.Mock).mockResolvedValue([{}, {}]);
-    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+    const mockSend = jest.fn().mockResolvedValue([{}, {}]);
+    const mockPost = jest.fn().mockResolvedValue({ data: {} });
+
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: mockSend,
+    }));
+    jest.doMock('axios', () => ({
+      post: mockPost,
+    }));
+
+    const handler = require('./contact').default;
 
     const req = {
       method: 'POST',
@@ -103,6 +116,19 @@ describe('Contact API', () => {
   });
 
   it('returns 400 when required fields are missing', async () => {
+    const mockSend = jest.fn();
+    const mockPost = jest.fn();
+
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: mockSend,
+    }));
+    jest.doMock('axios', () => ({
+      post: mockPost,
+    }));
+
+    const handler = require('./contact').default;
+
     const req = {
       method: 'POST',
       body: {
@@ -122,13 +148,23 @@ describe('Contact API', () => {
 
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith({ error: 'All fields are required.' });
-    expect(sgMail.send).not.toHaveBeenCalled();
-    expect(axios.post).not.toHaveBeenCalled();
+    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockPost).not.toHaveBeenCalled();
   });
 
   it('returns 500 when sending email fails', async () => {
-    (sgMail.send as jest.Mock).mockRejectedValue(new Error('Email error'));
-    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+    const mockSend = jest.fn().mockRejectedValue(new Error('Email error'));
+    const mockPost = jest.fn().mockResolvedValue({ data: {} });
+
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: mockSend,
+    }));
+    jest.doMock('axios', () => ({
+      post: mockPost,
+    }));
+
+    const handler = require('./contact').default;
 
     const req = {
       method: 'POST',
@@ -153,8 +189,18 @@ describe('Contact API', () => {
   });
 
   it('returns 500 when sending notification fails', async () => {
-    (sgMail.send as jest.Mock).mockResolvedValue([{}, {}]);
-    (axios.post as jest.Mock).mockRejectedValue(new Error('Notification error'));
+    const mockSend = jest.fn().mockResolvedValue([{}, {}]);
+    const mockPost = jest.fn().mockRejectedValue(new Error('Notification error'));
+
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: mockSend,
+    }));
+    jest.doMock('axios', () => ({
+      post: mockPost,
+    }));
+
+    const handler = require('./contact').default;
 
     const req = {
       method: 'POST',
@@ -179,6 +225,11 @@ describe('Contact API', () => {
   });
 
   it('returns 405 for non-POST requests', async () => {
+    jest.doMock('@sendgrid/mail', () => ({ setApiKey: jest.fn() }));
+    jest.doMock('axios', () => ({}));
+
+    const handler = require('./contact').default;
+
     const req = {
       method: 'GET',
     } as unknown as NextApiRequest;
