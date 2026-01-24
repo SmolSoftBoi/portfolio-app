@@ -78,6 +78,11 @@ describe('Contact API', () => {
 
     console.info(`Execution time: ${duration}ms`);
 
+    // Verify parallel execution: total time should be close to DELAY (100ms)
+    // rather than 2x DELAY (200ms) for sequential execution.
+    // Using 1.5x buffer (150ms) to account for overhead while ensuring parallelism.
+    expect(duration).toBeLessThan(150);
+
     expect(mockedSgMail.send).toHaveBeenCalled();
     expect(mockedAxios.post).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
