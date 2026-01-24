@@ -72,10 +72,31 @@ export default async function handler(
 
     // Send email and notification
     try {
-      await Promise.all([
+      const [emailResult, notificationResult] = await Promise.allSettled([
         sendEmail(name, email, subject, message),
         sendNotification('New contact form submission', `From ${name}`),
       ]);
+
+      const errors: string[] = [];
+
+      if (emailResult.status === 'rejected') {
+        console.error('Failed to send contact email:', emailResult.reason);
+        errors.push('email');
+      }
+
+      if (notificationResult.status === 'rejected') {
+        console.error(
+          'Failed to send contact notification:',
+          notificationResult.reason
+        );
+        errors.push('notification');
+      }
+
+      if (errors.length > 0) {
+        throw new Error(
+          `Failed to process contact request for: ${errors.join(', ')}`
+        );
+      }
       res.status(200).json({ message: 'Form submitted successfully.' });
     } catch (error) {
       console.error(error);
