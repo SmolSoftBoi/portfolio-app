@@ -26,11 +26,16 @@ describe('Contact API', () => {
     // Suppress console logs during tests to keep output clean
     jest.spyOn(console, 'log').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, 'info').mockImplementation(() => {});
 
     // Default mock implementations
     mockedSgMail.setApiKey.mockImplementation(() => {});
     mockedSgMail.send.mockResolvedValue([{}, {}] as any);
     mockedAxios.post.mockResolvedValue({ data: {} });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   afterAll(() => {
