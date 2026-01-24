@@ -2,17 +2,16 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import axios from 'axios';
 
-// Initialize SendGrid API key if available
-if (process.env.SENDGRID_API_KEY) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-}
-
 export async function sendEmail(
   name: string,
   email: string,
   subject: string,
   message: string
 ) {
+  if (process.env.SENDGRID_API_KEY) {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  }
+
   const msg: MailDataRequired = {
     to: process.env.TO_EMAIL_ADDRESS || '',
     from: process.env.FROM_EMAIL_ADDRESS || '',
@@ -28,7 +27,7 @@ export async function sendEmail(
   }
 }
 
-async function sendNotification(title: string, message: string) {
+export async function sendNotification(title: string, message: string) {
   const url = process.env.NOTIFICATION_URL || ''; // Use environment variable for notification URL
   if (!url) {
     throw new Error('Notification URL not set');
