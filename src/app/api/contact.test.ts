@@ -26,7 +26,7 @@ describe('Contact API', () => {
     // Suppress console logs during tests to keep output clean
     jest.spyOn(console, 'log').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
-    jest.spyOn(console, 'info').mockImplementation(() => {});
+    // console.info is left unmocked to allow benchmark results to be visible
     jest.spyOn(console, 'warn').mockImplementation(() => {});
 
     // Default mock implementations
