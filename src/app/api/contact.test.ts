@@ -24,47 +24,56 @@ describe('Contact API', () => {
     process.env = OLD_ENV;
   });
 
+  // Helper to setup mocks and load handler
+  const setupTest = (
+    sendImpl = jest.fn().mockResolvedValue([{}, {}]),
+    postImpl = jest.fn().mockResolvedValue({ data: {} })
+  ) => {
+    jest.doMock('@sendgrid/mail', () => ({
+      setApiKey: jest.fn(),
+      send: sendImpl,
+    }));
+    jest.doMock('axios', () => ({
+      post: postImpl,
+    }));
+
+    const handler = require('./contact').default;
+    return { handler, mockSend: sendImpl, mockPost: postImpl };
+  };
+
+  const createRequest = (method = 'POST', body: any = {
+    name: 'Test',
+    email: 'test@example.com',
+    subject: 'Subject',
+    message: 'Message',
+  }) => ({
+    method,
+    body,
+  } as unknown as NextApiRequest);
+
+  const createResponse = () => {
+    const res: any = {};
+    res.status = jest.fn().mockReturnValue(res);
+    res.json = jest.fn().mockReturnValue(res);
+    res.end = jest.fn().mockReturnValue(res);
+    return res as NextApiResponse;
+  };
+
   it('measures execution time of handler (benchmark)', async () => {
     const DELAY = 100;
 
-    // Define mock functions
     const mockSend = jest.fn().mockImplementation(async () => {
       await new Promise((resolve) => setTimeout(resolve, DELAY));
       return [{}, {}];
     });
-
     const mockPost = jest.fn().mockImplementation(async () => {
       await new Promise((resolve) => setTimeout(resolve, DELAY));
       return { data: {} };
     });
 
-    // Apply mocks
-    jest.doMock('@sendgrid/mail', () => ({
-      setApiKey: jest.fn(),
-      send: mockSend,
-    }));
-    jest.doMock('axios', () => ({
-      post: mockPost,
-    }));
-
-    // Import handler AFTER mocks
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'POST',
-      body: {
-        name: 'Test',
-        email: 'test@example.com',
-        subject: 'Subject',
-        message: 'Message',
-      },
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-      end: jest.fn(),
-    } as unknown as NextApiResponse;
+    const { handler } = setupTest(mockSend, mockPost);
+    const req = createRequest();
+    const res = createResponse();
 
     const start = performance.now();
     await handler(req, res);
@@ -79,33 +88,9 @@ describe('Contact API', () => {
   });
 
   it('returns 200 on successful submission', async () => {
-    const mockSend = jest.fn().mockResolvedValue([{}, {}]);
-    const mockPost = jest.fn().mockResolvedValue({ data: {} });
-
-    jest.doMock('@sendgrid/mail', () => ({
-      setApiKey: jest.fn(),
-      send: mockSend,
-    }));
-    jest.doMock('axios', () => ({
-      post: mockPost,
-    }));
-
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'POST',
-      body: {
-        name: 'Test',
-        email: 'test@example.com',
-        subject: 'Subject',
-        message: 'Message',
-      },
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as unknown as NextApiResponse;
+    const { handler } = setupTest();
+    const req = createRequest();
+    const res = createResponse();
 
     await handler(req, res);
 
@@ -116,31 +101,15 @@ describe('Contact API', () => {
   it('returns 400 when required fields are missing', async () => {
     const mockSend = jest.fn();
     const mockPost = jest.fn();
+    const { handler } = setupTest(mockSend, mockPost);
 
-    jest.doMock('@sendgrid/mail', () => ({
-      setApiKey: jest.fn(),
-      send: mockSend,
-    }));
-    jest.doMock('axios', () => ({
-      post: mockPost,
-    }));
-
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'POST',
-      body: {
-        // Missing name
-        email: 'test@example.com',
-        subject: 'Subject',
-        message: 'Message',
-      },
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as unknown as NextApiResponse;
+    const req = createRequest('POST', {
+      // Missing name
+      email: 'test@example.com',
+      subject: 'Subject',
+      message: 'Message',
+    });
+    const res = createResponse();
 
     await handler(req, res);
 
@@ -152,32 +121,10 @@ describe('Contact API', () => {
 
   it('returns 500 when sending email fails', async () => {
     const mockSend = jest.fn().mockRejectedValue(new Error('Email error'));
-    const mockPost = jest.fn().mockResolvedValue({ data: {} });
+    const { handler } = setupTest(mockSend);
 
-    jest.doMock('@sendgrid/mail', () => ({
-      setApiKey: jest.fn(),
-      send: mockSend,
-    }));
-    jest.doMock('axios', () => ({
-      post: mockPost,
-    }));
-
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'POST',
-      body: {
-        name: 'Test',
-        email: 'test@example.com',
-        subject: 'Subject',
-        message: 'Message',
-      },
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as unknown as NextApiResponse;
+    const req = createRequest();
+    const res = createResponse();
 
     await handler(req, res);
 
@@ -187,33 +134,11 @@ describe('Contact API', () => {
   });
 
   it('returns 500 when sending notification fails', async () => {
-    const mockSend = jest.fn().mockResolvedValue([{}, {}]);
     const mockPost = jest.fn().mockRejectedValue(new Error('Notification error'));
+    const { handler } = setupTest(undefined, mockPost);
 
-    jest.doMock('@sendgrid/mail', () => ({
-      setApiKey: jest.fn(),
-      send: mockSend,
-    }));
-    jest.doMock('axios', () => ({
-      post: mockPost,
-    }));
-
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'POST',
-      body: {
-        name: 'Test',
-        email: 'test@example.com',
-        subject: 'Subject',
-        message: 'Message',
-      },
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as unknown as NextApiResponse;
+    const req = createRequest();
+    const res = createResponse();
 
     await handler(req, res);
 
@@ -223,19 +148,9 @@ describe('Contact API', () => {
   });
 
   it('returns 405 for non-POST requests', async () => {
-    jest.doMock('@sendgrid/mail', () => ({ setApiKey: jest.fn() }));
-    jest.doMock('axios', () => ({}));
-
-    const handler = require('./contact').default;
-
-    const req = {
-      method: 'GET',
-    } as unknown as NextApiRequest;
-
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      end: jest.fn(),
-    } as unknown as NextApiResponse;
+    const { handler } = setupTest();
+    const req = createRequest('GET');
+    const res = createResponse();
 
     await handler(req, res);
 
