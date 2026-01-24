@@ -28,7 +28,7 @@ export async function sendEmail(
   }
 }
 
-export async function sendNotification(title: string, message: string) {
+async function sendNotification(title: string, message: string) {
   const url = process.env.NOTIFICATION_URL || ''; // Use environment variable for notification URL
   if (!url) {
     throw new Error('Notification URL not set');
