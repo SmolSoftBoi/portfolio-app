@@ -72,32 +72,13 @@ export default async function handler(
 
     // Send email and notification
     try {
-      const [emailResult, notificationResult] = await Promise.allSettled([
+      await Promise.all([
         sendEmail(name, email, subject, message),
         sendNotification('New contact form submission', `From ${name}`),
       ]);
-
-      const emailFailed =
-        emailResult.status === 'rejected' ? emailResult.reason : null;
-      const notificationFailed =
-        notificationResult.status === 'rejected'
-          ? notificationResult.reason
-          : null;
-
-      if (emailFailed || notificationFailed) {
-        if (emailFailed) {
-          console.error('Error while sending email:', emailFailed);
-        }
-        if (notificationFailed) {
-          console.error('Error while sending notification:', notificationFailed);
-        }
-        res.status(500).json({ error: 'Internal server error.' });
-        return;
-      }
-
       res.status(200).json({ message: 'Form submitted successfully.' });
     } catch (error) {
-      console.error('Unexpected error in contact handler:', error);
+      console.error(error);
       res.status(500).json({ error: 'Internal server error.' });
     }
   } else {

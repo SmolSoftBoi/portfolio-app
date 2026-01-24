@@ -37,6 +37,7 @@ describe('Contact API', () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    jest.useRealTimers();
   });
 
   afterAll(() => {
@@ -61,7 +62,8 @@ describe('Contact API', () => {
     return res as NextApiResponse;
   };
 
-  it('measures execution time of handler (benchmark)', async () => {
+  it('executes tasks in parallel (deterministic verification)', async () => {
+    jest.useFakeTimers();
     const DELAY = 100;
 
     // Override mocks with delays
@@ -77,21 +79,24 @@ describe('Contact API', () => {
     const req = createRequest();
     const res = createResponse();
 
-    const start = performance.now();
-    await handler(req, res);
-    const end = performance.now();
-    const duration = end - start;
+    const handlerPromise = handler(req, res);
 
-    console.info(`Execution time: ${duration}ms`);
+    // Track resolution
+    let resolved = false;
+    handlerPromise.then(() => { resolved = true; });
 
-    // Verify parallel execution: total time should be close to DELAY (100ms)
-    // rather than 2x DELAY (200ms) for sequential execution.
-    // Using 1.8x buffer to account for overhead while ensuring parallelism.
-    expect(duration).toBeLessThan(DELAY * 1.8);
+    // Advance time by 150ms.
+    // If parallel (max ~100ms), it should complete.
+    // If sequential (sum ~200ms), it should NOT complete yet.
+    await jest.advanceTimersByTimeAsync(150);
 
+    expect(resolved).toBe(true);
     expect(mockedSgMail.send).toHaveBeenCalled();
     expect(mockedAxios.post).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
+
+    // Ensure promise is settled to avoid open handles
+    await handlerPromise;
   });
 
   it('returns 200 on successful submission', async () => {
