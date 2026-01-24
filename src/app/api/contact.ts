@@ -10,6 +10,8 @@ async function sendEmail(
 ) {
   if (process.env.SENDGRID_API_KEY) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  } else {
+    console.warn('SendGrid API key is not set, email sending may fail.');
   }
 
   const msg: MailDataRequired = {
