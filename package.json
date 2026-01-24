@@ -19,7 +19,7 @@
     "@smolpack/bootstrap-extensions": "^1.1.2",
     "@smolpack/react-bootstrap-extensions": "^0.5.1",
     "@stripe/react-stripe-js": "^5.4.1",
-    "@types/node": "^20.11.0",
+    "@types/node": "25.0.3",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@types/react-kofi-button": "^0.1.0",
