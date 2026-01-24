@@ -60,34 +60,50 @@ describe('Contact API', () => {
     return res as NextApiResponse;
   };
 
-  it('measures execution time of handler (benchmark)', async () => {
-    const DELAY = 100;
+  it('starts external requests in parallel without timing assumptions', async () => {
+    let sendStarted = false;
+    let postStarted = false;
 
-    // Override mocks with delays
-    mockedSgMail.send.mockImplementation(async () => {
-      await new Promise((resolve) => setTimeout(resolve, DELAY));
-      return [{}, {}] as any;
+    let resolveSend: (() => void) | null = null;
+    let resolvePost: (() => void) | null = null;
+
+    // Override mocks to return deferred promises so we can observe call order
+    mockedSgMail.send.mockImplementation(() => {
+      sendStarted = true;
+      return new Promise((resolve) => {
+        resolveSend = () => {
+          resolve([{}, {}] as any);
+        };
+      });
     });
-    mockedAxios.post.mockImplementation(async () => {
-      await new Promise((resolve) => setTimeout(resolve, DELAY));
-      return { data: {} };
+
+    mockedAxios.post.mockImplementation(() => {
+      postStarted = true;
+      return new Promise((resolve) => {
+        resolvePost = () => {
+          resolve({ data: {} });
+        };
+      });
     });
 
     const req = createRequest();
     const res = createResponse();
 
-    const start = performance.now();
-    await handler(req, res);
-    const end = performance.now();
-    const duration = end - start;
+    // Start handler but do not await it yet so we can observe how it kicks off async work
+    const handlerPromise = handler(req, res);
 
-    console.info(`Execution time: ${duration}ms`);
+    // Allow any microtasks in the handler to run (e.g., Promise.all setup)
+    await Promise.resolve();
 
-    // Verify parallel execution: total time should be close to DELAY (100ms)
-    // rather than 2x DELAY (200ms) for sequential execution.
-    // Using 1.8x buffer to account for overhead while ensuring parallelism.
-    expect(duration).toBeLessThan(DELAY * 1.8);
+    // If the handler performs the two operations in parallel (e.g., via Promise.all),
+    // both mocks should have been started before either promise resolves.
+    expect(sendStarted).toBe(true);
+    expect(postStarted).toBe(true);
 
+    // Now let the handler complete by resolving the deferred promises
+    resolveSend && resolveSend();
+    resolvePost && resolvePost();
+    await handlerPromise;
     expect(mockedSgMail.send).toHaveBeenCalled();
     expect(mockedAxios.post).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
