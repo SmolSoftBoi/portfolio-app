@@ -1,10 +1,10 @@
 /** @jest-environment jsdom */
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Gpts from './Gpts';
 
-// Mock the GptCard component to isolate the test to Gpts component logic
+// Mock the GptCard component
 jest.mock('./GptCard', () => {
   return function MockGptCard({ gpt }: { gpt: any }) {
     return <div data-testid="gpt-card">{gpt.title}</div>;
@@ -18,16 +18,14 @@ jest.mock('./SupportButton', () => {
   };
 });
 
-// Define mock data inside the factory or use a separate file, but here inline is fine.
+// Mock small dataset for functional testing
 jest.mock('@/gpts', () => {
-  const PACK_COUNT = 1000;
-  const packs = Array.from({ length: PACK_COUNT }, (_, i) => `Pack ${i}`);
-  const gpts = packs.map((pack, i) => ({
-    id: `gpt-${i}`,
-    title: `GPT ${i}`,
-    description: `Description ${i}`,
-    pack: pack,
-  }));
+  const packs = ['Pack A', 'Pack B'];
+  const gpts = [
+    { id: '1', title: 'GPT 1', description: 'Desc 1', pack: 'Pack A' },
+    { id: '2', title: 'GPT 2', description: 'Desc 2', pack: 'Pack B' },
+    { id: '3', title: 'GPT 3', description: 'Desc 3', pack: 'Pack A' },
+  ];
   return {
     __esModule: true,
     default: gpts,
@@ -35,43 +33,39 @@ jest.mock('@/gpts', () => {
   };
 });
 
-// We also need the mock data in the test to pass as props
-const PACK_COUNT = 1000;
-const packs = Array.from({ length: PACK_COUNT }, (_, i) => `Pack ${i}`);
-const mockGpts = packs.map((pack, i) => ({
-  id: `gpt-${i}`,
-  title: `GPT ${i}`,
-  description: `Description ${i}`,
-  pack: pack,
-}));
+const mockGpts = [
+  { id: '1', title: 'GPT 1', description: 'Desc 1', pack: 'Pack A' },
+  { id: '2', title: 'GPT 2', description: 'Desc 2', pack: 'Pack B' },
+  { id: '3', title: 'GPT 3', description: 'Desc 3', pack: 'Pack A' },
+];
 
-describe('Gpts Component Benchmark', () => {
+describe('Gpts Component', () => {
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
   });
 
-  it('renders correctly', () => {
+  it('renders correctly with default filter', () => {
     render(<Gpts gpts={mockGpts} />);
     expect(screen.getByText('All')).toBeInTheDocument();
-    expect(screen.getByText('Pack 0')).toBeInTheDocument();
-    expect(screen.getByText(`Pack ${PACK_COUNT - 1}`)).toBeInTheDocument();
+    expect(screen.getByText('Pack A')).toBeInTheDocument();
+    expect(screen.getByText('Pack B')).toBeInTheDocument();
+
+    // Should show all cards initially
+    expect(screen.getAllByTestId('gpt-card')).toHaveLength(3);
   });
 
-  // Only run benchmark if explicitly requested via environment variable
-  const runBenchmark = process.env.BENCHMARK === 'true' ? it : it.skip;
+  it('filters items when category button is clicked', () => {
+    render(<Gpts gpts={mockGpts} />);
 
-  runBenchmark('measures render time', () => {
-    const start = performance.now();
+    const packABtn = screen.getByText('Pack A');
+    fireEvent.click(packABtn);
 
-    const ITERATIONS = 20;
-    for (let i = 0; i < ITERATIONS; i++) {
-        const { unmount } = render(<Gpts gpts={mockGpts} />);
-        unmount();
-    }
-
-    const end = performance.now();
-    // eslint-disable-next-line no-console
-    console.log(`Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
+    // Should only show items from Pack A (GPT 1 and GPT 3)
+    const cards = screen.getAllByTestId('gpt-card');
+    expect(cards).toHaveLength(2);
+    expect(screen.getByText('GPT 1')).toBeInTheDocument();
+    expect(screen.getByText('GPT 3')).toBeInTheDocument();
+    expect(screen.queryByText('GPT 2')).not.toBeInTheDocument();
   });
 });
