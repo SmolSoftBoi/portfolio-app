@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Gpts from './Gpts';
+import gpts from '@/gpts';
 
 // Mock the GptCard component
 jest.mock('./GptCard', () => {
@@ -21,23 +22,17 @@ jest.mock('./SupportButton', () => {
 // Mock small dataset for functional testing
 jest.mock('@/gpts', () => {
   const packs = ['Pack A', 'Pack B'];
-  const gpts = [
+  const mockGptsList = [
     { id: '1', title: 'GPT 1', description: 'Desc 1', pack: 'Pack A' },
     { id: '2', title: 'GPT 2', description: 'Desc 2', pack: 'Pack B' },
     { id: '3', title: 'GPT 3', description: 'Desc 3', pack: 'Pack A' },
   ];
   return {
     __esModule: true,
-    default: gpts,
+    default: mockGptsList,
     gptPacks: packs,
   };
 });
-
-const mockGpts = [
-  { id: '1', title: 'GPT 1', description: 'Desc 1', pack: 'Pack A' },
-  { id: '2', title: 'GPT 2', description: 'Desc 2', pack: 'Pack B' },
-  { id: '3', title: 'GPT 3', description: 'Desc 3', pack: 'Pack A' },
-];
 
 describe('Gpts Component', () => {
   afterEach(() => {
@@ -46,7 +41,7 @@ describe('Gpts Component', () => {
   });
 
   it('renders correctly with default filter', () => {
-    render(<Gpts gpts={mockGpts} />);
+    render(<Gpts gpts={gpts} />);
     expect(screen.getByText('All')).toBeInTheDocument();
     expect(screen.getByText('Pack A')).toBeInTheDocument();
     expect(screen.getByText('Pack B')).toBeInTheDocument();
@@ -56,7 +51,7 @@ describe('Gpts Component', () => {
   });
 
   it('filters items when category button is clicked', () => {
-    render(<Gpts gpts={mockGpts} />);
+    render(<Gpts gpts={gpts} />);
 
     const packABtn = screen.getByText('Pack A');
     fireEvent.click(packABtn);

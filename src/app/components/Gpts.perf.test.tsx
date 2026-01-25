@@ -3,6 +3,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Gpts from './Gpts';
+import gpts, { gptPacks } from '@/gpts';
 
 // Mock child components to isolate Gpts rendering performance
 jest.mock('./GptCard', () => () => <div />);
@@ -22,12 +23,6 @@ jest.mock('@/gpts', () => {
   };
 });
 
-// Mock data to pass as props
-const PACK_COUNT = 1000;
-// We keep the gpts list empty or small because we are primarily testing the
-// rendering overhead of the filter buttons list (gptPacks.map), which was the optimization target.
-const mockGpts: any[] = [];
-
 describe('Gpts Component Benchmark', () => {
   afterEach(() => {
     cleanup();
@@ -37,17 +32,18 @@ describe('Gpts Component Benchmark', () => {
   // Only run if BENCHMARK=true
   const runBenchmark = process.env.BENCHMARK === 'true' ? it : it.skip;
 
-  runBenchmark(`rendering ${PACK_COUNT} filter buttons`, () => {
+  runBenchmark(`rendering ${gptPacks.length} filter buttons`, () => {
     const start = performance.now();
 
     const ITERATIONS = 20;
     for (let i = 0; i < ITERATIONS; i++) {
-        const { unmount } = render(<Gpts gpts={mockGpts} />);
+        // Use the imported gpts mock (which is [])
+        const { unmount } = render(<Gpts gpts={gpts} />);
         unmount();
     }
 
     const end = performance.now();
     // eslint-disable-next-line no-console
-    console.log(`Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
+    console.log(`Average render time for ${gptPacks.length} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
   });
 });
