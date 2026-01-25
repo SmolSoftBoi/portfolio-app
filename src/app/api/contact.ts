@@ -2,7 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import axios from 'axios';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+} else {
+  console.warn('SendGrid API key is not set, email sending may fail.');
+}
 
 async function sendEmail(
   name: string,
@@ -68,8 +72,10 @@ export default async function handler(
 
     // Send email and notification
     try {
-      await sendEmail(name, email, subject, message);
-      await sendNotification('New contact form submission', `From ${name}`);
+      await Promise.all([
+        sendEmail(name, email, subject, message),
+        sendNotification('New contact form submission', `From ${name}`),
+      ]);
       res.status(200).json({ message: 'Form submitted successfully.' });
     } catch (error) {
       console.error(error);
