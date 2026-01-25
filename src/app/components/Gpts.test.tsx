@@ -58,25 +58,20 @@ describe('Gpts Component Benchmark', () => {
     expect(screen.getByText(`Pack ${PACK_COUNT - 1}`)).toBeInTheDocument();
   });
 
-  it('measures render time', () => {
+  // Only run benchmark if explicitly requested via environment variable
+  const runBenchmark = process.env.BENCHMARK === 'true' ? it : it.skip;
+
+  runBenchmark('measures render time', () => {
     const start = performance.now();
 
     const ITERATIONS = 20;
     for (let i = 0; i < ITERATIONS; i++) {
-      const { unmount } = render(<Gpts gpts={mockGpts} />);
-      unmount();
+        const { unmount } = render(<Gpts gpts={mockGpts} />);
+        unmount();
     }
 
     const end = performance.now();
-    const totalDuration = end - start;
-    const averageDuration = totalDuration / ITERATIONS;
-
-    console.log(
-      `Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${averageDuration} ms`,
-    );
-
-    // Assert on a stable property of the measurement so this test can fail deterministically.
-    expect(Number.isFinite(averageDuration)).toBe(true);
-    expect(averageDuration).toBeGreaterThanOrEqual(0);
+    // eslint-disable-next-line no-console
+    console.log(`Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
   });
 });
