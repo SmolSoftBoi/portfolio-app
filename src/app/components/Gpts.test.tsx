@@ -63,11 +63,20 @@ describe('Gpts Component Benchmark', () => {
 
     const ITERATIONS = 20;
     for (let i = 0; i < ITERATIONS; i++) {
-        const { unmount } = render(<Gpts gpts={mockGpts} />);
-        unmount();
+      const { unmount } = render(<Gpts gpts={mockGpts} />);
+      unmount();
     }
 
     const end = performance.now();
-    console.log(`Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
+    const totalDuration = end - start;
+    const averageDuration = totalDuration / ITERATIONS;
+
+    console.log(
+      `Average render time for ${PACK_COUNT} buttons over ${ITERATIONS} iterations: ${averageDuration} ms`,
+    );
+
+    // Assert on a stable property of the measurement so this test can fail deterministically.
+    expect(Number.isFinite(averageDuration)).toBe(true);
+    expect(averageDuration).toBeGreaterThanOrEqual(0);
   });
 });
