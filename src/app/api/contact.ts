@@ -2,18 +2,18 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import axios from 'axios';
 
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+} else {
+  console.warn('SendGrid API key is not set, email sending may fail.');
+}
+
 async function sendEmail(
   name: string,
   email: string,
   subject: string,
   message: string
 ) {
-  if (process.env.SENDGRID_API_KEY) {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  } else {
-    console.warn('SendGrid API key is not set, email sending may fail.');
-  }
-
   const msg: MailDataRequired = {
     to: process.env.TO_EMAIL_ADDRESS || '',
     from: process.env.FROM_EMAIL_ADDRESS || '',
