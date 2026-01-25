@@ -63,40 +63,50 @@ describe('Contact API', () => {
   };
 
   it('executes tasks in parallel (deterministic verification)', async () => {
-    jest.useFakeTimers();
-    const DELAY = 100;
+    // Create controllable ("deferred") promises for each async task
+    let resolveEmail!: () => void;
+    const emailPromise = new Promise<any>((resolve) => {
+      resolveEmail = () => resolve([{}, {}] as any);
+    });
 
-    // Override mocks with delays
-    mockedSgMail.send.mockImplementation(async () => {
-      await new Promise((resolve) => setTimeout(resolve, DELAY));
-      return [{}, {}] as any;
+    let resolveWebhook!: () => void;
+    const webhookPromise = new Promise<any>((resolve) => {
+      resolveWebhook = () => resolve({ data: {} });
     });
-    mockedAxios.post.mockImplementation(async () => {
-      await new Promise((resolve) => setTimeout(resolve, DELAY));
-      return { data: {} };
-    });
+
+    // Override mocks to return the deferred promises (no timers involved)
+    mockedSgMail.send.mockImplementation(() => emailPromise as any);
+    mockedAxios.post.mockImplementation(() => webhookPromise as any);
 
     const req = createRequest();
     const res = createResponse();
 
     const handlerPromise = handler(req, res);
 
-    // Track resolution
-    let resolved = false;
-    handlerPromise.then(() => { resolved = true; });
+    // Allow the handler to start and call the mocks
+    await Promise.resolve();
 
-    // Advance time by 150ms.
-    // If parallel (max ~100ms), it should complete.
-    // If sequential (sum ~200ms), it should NOT complete yet.
-    await jest.advanceTimersByTimeAsync(150);
-
-    expect(resolved).toBe(true);
+    // Both async tasks should have been started without waiting for each other
     expect(mockedSgMail.send).toHaveBeenCalled();
     expect(mockedAxios.post).toHaveBeenCalled();
-    expect(res.status).toHaveBeenCalledWith(200);
 
-    // Ensure promise is settled to avoid open handles
+    // Track when the handler completes
+    let handlerResolved = false;
+    handlerPromise.then(() => {
+      handlerResolved = true;
+    });
+
+    // Resolve only one task; handler should NOT finish yet if it waits for both
+    resolveEmail();
+    await Promise.resolve();
+    expect(handlerResolved).toBe(false);
+
+    // Now resolve the second task; handler should be able to complete
+    resolveWebhook();
     await handlerPromise;
+
+    expect(handlerResolved).toBe(true);
+    expect(res.status).toHaveBeenCalledWith(200);
   });
 
   it('returns 200 on successful submission', async () => {
