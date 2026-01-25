@@ -1,17 +1,24 @@
-import handler from './contact';
-import sgMail from '@sendgrid/mail';
 import axios from 'axios';
+import type sgMailType from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 jest.mock('@sendgrid/mail');
 jest.mock('axios');
 
+const sgMail = require('@sendgrid/mail') as unknown as sgMailType;
 const mockedSgMail = sgMail as jest.Mocked<typeof sgMail>;
 const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+let handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
 describe('Contact API', () => {
   const OLD_ENV = process.env;
 
+  beforeAll(() => {
+    // Import the handler after mocks are in place to ensure SendGrid is mocked during module initialization.
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    handler = require('./contact').default;
+  });
   beforeEach(() => {
     process.env = {
       ...OLD_ENV,
