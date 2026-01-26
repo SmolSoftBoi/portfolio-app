@@ -6,8 +6,20 @@ import Gpts from './Gpts';
 import gpts, { gptPacks } from '@/gpts';
 
 // Mock child components to isolate Gpts rendering performance
-jest.mock('./GptCard', () => function MockGptCard() { return <div />; });
-jest.mock('./SupportButton', () => function MockSupportButton() { return <div />; });
+jest.mock(
+  './GptCard',
+  () =>
+    function MockGptCard() {
+      return <div />;
+    }
+);
+jest.mock(
+  './SupportButton',
+  () =>
+    function MockSupportButton() {
+      return <div />;
+    }
+);
 
 // Mock large dataset for benchmarking
 jest.mock('@/gpts', () => {
@@ -38,12 +50,14 @@ describe('Gpts Component Benchmark', () => {
 
     const ITERATIONS = 20;
     for (let i = 0; i < ITERATIONS; i++) {
-        // Use the imported gpts mock (which is [])
-        const { unmount } = render(<Gpts gpts={gpts} />);
-        unmount();
+      // Use the imported gpts mock (which is [])
+      const { unmount } = render(<Gpts gpts={gpts} />);
+      unmount();
     }
 
     const end = performance.now();
-    console.log(`Average render time for ${gptPacks.length} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`);
+    console.log(
+      `Average render time for ${gptPacks.length} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`
+    );
   });
 });
