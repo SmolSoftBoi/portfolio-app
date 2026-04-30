@@ -29,9 +29,9 @@ export default function Gpts(props: GptsProps) {
           >
             All
           </Button>
-          {gptPacks.map((pack, index) => (
+          {gptPacks.map((pack) => (
             <Button
-              key={index}
+              key={pack}
               variant={`${filter === pack ? 'primary' : 'secondary'}`}
               className={`mb-2 ms-2 ${filter === pack ? 'active' : ''}`}
               onClick={() => handleFilterChange(pack)}
