@@ -3,7 +3,8 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Gpts from './Gpts';
-import gpts, { gptPacks } from '@/gpts';
+import { gptPacks } from '@/gpts';
+import type { Gpt } from '@/gpts';
 
 // Mock child components to isolate Gpts rendering performance
 jest.mock(
@@ -45,19 +46,45 @@ describe('Gpts Component Benchmark', () => {
   // Only run if BENCHMARK=true
   const runBenchmark = process.env.BENCHMARK === 'true' ? it : it.skip;
 
-  runBenchmark(`rendering ${gptPacks.length} filter buttons`, () => {
+  const createBenchmarkGpts = (packs: string[]): Gpt[] =>
+    packs.map((pack, index) => ({
+      id: `benchmark-gpt-${index}`,
+      title: `Benchmark GPT ${index}`,
+      description: `Synthetic GPT for ${pack}`,
+      pack,
+    }));
+
+  const replaceGptPacks = (packs: string[]) => {
+    gptPacks.splice(0, gptPacks.length, ...packs);
+  };
+
+  runBenchmark(`updating ${gptPacks.length} filter buttons`, () => {
+    const ITERATIONS = 20;
+    const ascendingPacks = [...gptPacks];
+    const descendingPacks = [...ascendingPacks].reverse();
+    const benchmarkGpts = createBenchmarkGpts(ascendingPacks);
+    const { rerender, unmount } = render(<Gpts gpts={benchmarkGpts} />);
+
     const start = performance.now();
 
-    const ITERATIONS = 20;
-    for (let i = 0; i < ITERATIONS; i++) {
-      // Use the imported gpts mock (which is [])
-      const { unmount } = render(<Gpts gpts={gpts} />);
-      unmount();
+    for (let index = 0; index < ITERATIONS; index++) {
+      replaceGptPacks(index % 2 === 0 ? descendingPacks : ascendingPacks);
+      rerender(<Gpts gpts={benchmarkGpts} />);
     }
 
     const end = performance.now();
-    console.log(
-      `Average render time for ${gptPacks.length} buttons over ${ITERATIONS} iterations: ${(end - start) / ITERATIONS} ms`
-    );
+    const averageDuration = (end - start) / ITERATIONS;
+
+    try {
+      console.info(
+        `Average update time for ${gptPacks.length} buttons over ${ITERATIONS} iterations: ${averageDuration} ms`
+      );
+    } finally {
+      replaceGptPacks(ascendingPacks);
+      unmount();
+    }
+
+    expect(Number.isFinite(averageDuration)).toBe(true);
+    expect(averageDuration).toBeGreaterThanOrEqual(0);
   });
 });
