@@ -36,7 +36,7 @@
     "react-bootstrap": "^2.10.6",
     "react-dom": "19.2.3",
     "react-kofi-button": "^0.7.1",
-    "react-qr-code": "^2.0.15",
+    "react-qr-code": "^2.0.21",
     "remark-gfm": "^4.0.0",
     "sharp": "^0.34.5",
     "typescript": "5.9.3"
