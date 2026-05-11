@@ -51,15 +51,19 @@ describe('Contact API', () => {
     process.env = OLD_ENV;
   });
 
-  const createRequest = (method = 'POST', body: any = {
-    name: 'Test',
-    email: 'test@example.com',
-    subject: 'Subject',
-    message: 'Message',
-  }) => ({
-    method,
-    body,
-  } as unknown as NextApiRequest);
+  const createRequest = (
+    method = 'POST',
+    body: any = {
+      name: 'Test',
+      email: 'test@example.com',
+      subject: 'Subject',
+      message: 'Message',
+    }
+  ) =>
+    ({
+      method,
+      body,
+    }) as unknown as NextApiRequest;
 
   const createResponse = () => {
     const res: any = {};
@@ -123,7 +127,9 @@ describe('Contact API', () => {
     await handler(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith({ message: 'Form submitted successfully.' });
+    expect(res.json).toHaveBeenCalledWith({
+      message: 'Form submitted successfully.',
+    });
   });
 
   it('returns 400 when required fields are missing', async () => {
@@ -138,7 +144,9 @@ describe('Contact API', () => {
     await handler(req, res);
 
     expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith({ error: 'All fields are required.' });
+    expect(res.json).toHaveBeenCalledWith({
+      error: 'All fields are required.',
+    });
     expect(mockedSgMail.send).not.toHaveBeenCalled();
     expect(mockedAxios.post).not.toHaveBeenCalled();
   });
