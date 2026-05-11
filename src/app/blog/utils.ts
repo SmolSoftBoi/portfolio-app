@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'fs';
+import { readdir, readFile } from 'fs/promises';
 import { basename, extname, join } from 'path';
 
 export type Metadata = {
@@ -65,14 +65,14 @@ async function parseFrontmatter(
   ).frontmatter; */
 }
 
-function getMDXFiles(dir: string) {
-  return readdirSync(dir).filter((file) => extname(file) === '.mdx');
+async function getMDXFiles(dir: string) {
+  return (await readdir(dir)).filter((file) => extname(file) === '.mdx');
 }
 
 async function readMDXFile(
   filePath: string
 ): Promise<{ frontmatter: Metadata; content: string }> {
-  let rawContent = readFileSync(filePath, 'utf-8');
+  let rawContent = await readFile(filePath, 'utf-8');
   const { frontmatter, content } = await parseFrontmatter(rawContent);
 
   return {
@@ -82,7 +82,7 @@ async function readMDXFile(
 }
 
 async function getMDXData(dir: string) {
-  let mdxFiles = getMDXFiles(dir);
+  let mdxFiles = await getMDXFiles(dir);
   return await Promise.all(
     mdxFiles.map(async (file) => {
       let { frontmatter, content } = await readMDXFile(join(dir, file));
