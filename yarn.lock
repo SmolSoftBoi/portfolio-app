@@ -1726,10 +1726,10 @@
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.12.tgz#b5d76568485b02a307238270bfe96cb51ee2a044"
   integrity sha512-8TV6R3h2j7a91c+1DXdJi3Syo69zzIZbz7Lg5tORM5LEJG7X/E6a1V3drRyBRZq7/utz7A+c4OgYLiLcYGHG6w==
 
-"@types/react@*", "@types/react@19.2.7", "@types/react@>=16.9.11":
-  version "19.2.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.2.7.tgz#84e62c0f23e8e4e5ac2cadcea1ffeacccae7f62f"
-  integrity sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==
+"@types/react@*", "@types/react@19.2.14", "@types/react@>=16.9.11":
+  version "19.2.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.2.14.tgz#39604929b5e3957e3a6fa0001dafb17c7af70bad"
+  integrity sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==
   dependencies:
     csstype "^3.2.2"
 
@@ -2577,10 +2577,10 @@ convert-source-map@^2.0.0:
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
-convex-helpers@^0.1.116:
-  version "0.1.116"
-  resolved "https://registry.yarnpkg.com/convex-helpers/-/convex-helpers-0.1.116.tgz#2606f960c39fb80c9bfce6f5261d375fab17b555"
-  integrity sha512-kw+jqwkeXDc9LpiOurJgPiWrnJZKHrE32mpsyPes2UwLtRw3oLi9cXkc37G0dOJp7iaCXDJ8V9OmXDeXcKvEGw==
+convex-helpers@^0.1.118:
+  version "0.1.118"
+  resolved "https://registry.yarnpkg.com/convex-helpers/-/convex-helpers-0.1.118.tgz#1dce496e63f0c81af1cfb4bbb08084be8575844f"
+  integrity sha512-07t10n8CZG/YCDzOy5/WDdNNQYL+mP7VU76BLJCZrB2dvJTH7UZJxPqNrhPH+pZbW52joQ91eQHSksdcgOXebQ==
 
 convex@^1.38.0:
   version "1.38.0"
@@ -6027,10 +6027,10 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@19.2.3:
-  version "19.2.3"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.2.3.tgz#d83e5e8e7a258cf6b4fe28640515f99b87cd19b8"
-  integrity sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==
+react@19.2.6:
+  version "19.2.6"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.6.tgz#3dadb8e12b2a7934c1d5317973e5dce1301f9a4d"
+  integrity sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==
 
 read-pkg-up@^6.0.0:
   version "6.0.0"
