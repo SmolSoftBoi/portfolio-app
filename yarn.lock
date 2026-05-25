@@ -2582,10 +2582,10 @@ convex-helpers@^0.1.118:
   resolved "https://registry.yarnpkg.com/convex-helpers/-/convex-helpers-0.1.118.tgz#1dce496e63f0c81af1cfb4bbb08084be8575844f"
   integrity sha512-07t10n8CZG/YCDzOy5/WDdNNQYL+mP7VU76BLJCZrB2dvJTH7UZJxPqNrhPH+pZbW52joQ91eQHSksdcgOXebQ==
 
-convex@^1.38.0:
-  version "1.38.0"
-  resolved "https://registry.yarnpkg.com/convex/-/convex-1.38.0.tgz#dd53dc42795360465939fe20cdd5051940868626"
-  integrity sha512-122AC6y5lUS7mr39cluLw9+TOtRX5d/XxeivHhHObs/NTXoVvOnIgDzexVcxaz6Rk0oLFSoydSR1rDCltEz/0A==
+convex@^1.39.1:
+  version "1.39.1"
+  resolved "https://registry.yarnpkg.com/convex/-/convex-1.39.1.tgz#f6931842d75c858de403e6763b7e433ea22eb66c"
+  integrity sha512-W+gVXA7BpRF1xLlS1kGTtKVaqd5yonqbGESKiPtIUXjV744GdDz8IG7RVsSY5KzHbgxuJBHKaJYk+92OIHTskQ==
   dependencies:
     esbuild "0.27.0"
     prettier "^3.0.0"
