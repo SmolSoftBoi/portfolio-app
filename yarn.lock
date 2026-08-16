@@ -1486,10 +1486,10 @@
     cpy-cli "^5.0.0"
     prop-types "^15.8.1"
 
-"@stripe/react-stripe-js@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-6.3.0.tgz#7fccaa467998db0b45508bee48bb8773ddc3cecc"
-  integrity sha512-N1FTRNCMKySElDz1lAsf/m6Oy5vcl6LRVXcW29t0Y3U3HYOAqCBlk6nuDsR2x7SAuaXkVCjnpCqrNbA/7l74jg==
+"@stripe/react-stripe-js@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-6.4.0.tgz#32a6ad7f0b5196c6bbddedd677f941dfb7df0700"
+  integrity sha512-5cAf7GAqf8VHPoPLVnJQ2MHtDWLdiEPs5GW/loU7iDEue3xf620v11skrk5HICUraDOhODPYpttgFC5N579NxA==
   dependencies:
     prop-types "^15.7.2"
 
