@@ -46,7 +46,7 @@
     "@types/jest": "^30.0.0",
     "jest": "^30.4.2",
     "sass": "^1.99.0",
-    "ts-jest": "^29.4.9",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   },
   "prettier": "@smolpack/prettier-config",
